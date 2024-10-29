@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:57:07 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/10/29 22:06:41 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/10/30 00:10:52 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,15 @@ struct s_node
 	t_node	*next;
 	t_node	*prev;
 };
-t_node	*add_node(t_node *node, int value);
-void	free_node(t_node *node);
+t_node	*node_add_after(t_node **node, int value);
+t_node	*node_add_before(t_node **node, int value);
+void	node_remove(t_node **node);
+void	node_free(t_node *node);
+void	swap(t_node *node);
+void	push(t_node **from, t_node **to);
+void	rotate(t_node **node);
+void	rotate_reverse(t_node **node);
+
+void	print_stacks(t_node *a, t_node *b);
 
 #endif

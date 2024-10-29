@@ -1,0 +1,37 @@
+{
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "C/C++: clang générer le fichier actif",
+      "command": "/usr/bin/clang",
+      "args": [
+        "-fcolor-diagnostics",
+        "-fansi-escape-codes",
+        "-I",
+        "${workspaceFolder}/lib/ft_printf",
+        "-I",
+        "${workspaceFolder}/lib/libft",
+        "-L",
+        "${workspaceFolder}/lib/ft_printf",
+        "-L",
+        "${workspaceFolder}/lib/libft",
+        "-lftprintf",
+        "-lft",
+        "-g",
+        "${workspaceFolder}/*.c",
+        "-o",
+        "${workspaceFolder}/debug_exe"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Tâche générée par le débogueur."
+    }
+  ],
+  "version": "2.0.0"
+}

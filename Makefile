@@ -5,7 +5,7 @@ FT_PRINTF	=	./lib/ft_printf
 LIBFT		=	./lib/libft
 FLAGS		=	-Wall -Wextra -Werror
 
-SOURCES		=	main.c stack.c 
+SOURCES		=	main.c node.c node_move.c node_utils.c 
 FUNCTIONS	=	$(subst .c,,$(notdir $(SOURCES)))
 OBJECTS		=	$(addsuffix .o, $(addprefix $(DIR_BUILD)/, $(FUNCTIONS)))
 
