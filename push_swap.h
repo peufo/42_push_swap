@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:57:07 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/10/30 00:10:52 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/10/30 00:38:41 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_node	*node_add_after(t_node **node, int value);
 t_node	*node_add_before(t_node **node, int value);
 void	node_remove(t_node **node);
 void	node_free(t_node *node);
+int		node_count(t_node *start);
 void	swap(t_node *node);
 void	push(t_node **from, t_node **to);
 void	rotate(t_node **node);
