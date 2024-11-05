@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
+/*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 22:12:35 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/10/30 00:57:54 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:48:14 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,38 +18,40 @@ static void	node_print(t_node *start, char *name)
 
 	if (!start)
 	{
-		ft_printf("%s:\n", name);
+		ft_printf("%3s:\n", name);
 		return ;
 	}
-	ft_printf("%s: %3i", name, start->value);
+
+	ft_printf("%3s: %4i", name, start->value);
 	node = start->next;
 	while (node != start)
 	{
-		ft_printf(" %3i", node->value);
+		ft_printf(" %4i", node->value);
 		node = node->next;
 	}
+
+	ft_printf("\n%3s: %4i", "pos", start->pos);
+	node = start->next;
+	while (node != start)
+	{
+		ft_printf(" %4i", node->pos);
+		node = node->next;
+	}
+
+	ft_printf("\n%3s: %4i", "del", start->delta);
+	node = start->next;
+	while (node != start)
+	{
+		ft_printf(" %4i", node->delta);
+		node = node->next;
+	}
+
 	ft_printf("\n");
-}
-
-int	node_count(t_node *start)
-{
-	t_node	*node;
-	int		count;
-
-	if (!start)
-		return (0);
-	node = start->next;
-	count = 1;
-	while (node != start)
-	{
-		node = node->next;
-		count++;
-	}
-	return (count);
 }
 
 void	print_stacks(t_node *a, t_node *b)
 {
+	ft_printf("Elements: %d\n", node_count(a));
 	node_print(a, "A");
 	node_print(b, "B");
 	ft_printf("\n");

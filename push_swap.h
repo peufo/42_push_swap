@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
+/*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:57:07 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/10/30 00:38:41 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:18:41 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_node	t_node;
 struct s_node
 {
 	int		value;
+	int		pos;
+	int		delta;
 	t_node	*next;
 	t_node	*prev;
 };
@@ -31,6 +33,7 @@ t_node	*node_add_before(t_node **node, int value);
 void	node_remove(t_node **node);
 void	node_free(t_node *node);
 int		node_count(t_node *start);
+void	node_set_delta(t_node *node);
 void	swap(t_node *node);
 void	push(t_node **from, t_node **to);
 void	rotate(t_node **node);
