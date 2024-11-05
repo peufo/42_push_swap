@@ -1,5 +1,6 @@
 build
 push_swap
 libftprintf.a
+libft.a
 *.dSYM
 debug_exe
