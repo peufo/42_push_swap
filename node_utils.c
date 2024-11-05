@@ -6,7 +6,7 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 22:12:35 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/05 15:48:14 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/05 16:24:40 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static void	node_print(t_node *start, char *name)
 
 void	print_stacks(t_node *a, t_node *b)
 {
-	ft_printf("Elements: %d\n", node_count(a));
 	node_print(a, "A");
 	node_print(b, "B");
 	ft_printf("\n");

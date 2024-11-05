@@ -6,7 +6,7 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:55:39 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/05 15:31:36 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/05 16:49:24 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,34 @@ int	terminate(t_node *a, t_node *b, char is_error)
 
 void	resolve(t_node *a, t_node *b)
 {
+	node_set_delta(a);
+	print_stacks(a, b);
+
+	rotate_reverse(&a);
+	node_set_delta(a);
+	print_stacks(a, b);
+
+	push(&a, &b);
+	node_set_delta(a);
+	print_stacks(a, b);
+
+	rotate_reverse(&a);
+	node_set_delta(a);
+	print_stacks(a, b);
+
+	rotate_reverse(&a);
+	node_set_delta(a);
+	print_stacks(a, b);
+
+	push(&b, &a);
+	node_set_delta(a);
+	print_stacks(a, b);
+
+	rotate_reverse(&a);
+	node_set_delta(a);
+	print_stacks(a, b);
+
+	rotate_reverse(&a);
 	node_set_delta(a);
 	print_stacks(a, b);
 }
