@@ -27,12 +27,13 @@ watch() {
 				success "\nNORMINETTE OK"
 			else
 				warning "\nNORMINETTE ERROR"
-				echo "$NORM_ERROR"
+				#echo "$NORM_ERROR"
 			fi
 
 			echo ""
 			PROG="./push_swap"
-			ARGS="7 2 3 5 6 4"
+			ARGS="8 2 5 0 12 7 5"
+			#ARGS="0 2 1"
 			rm -f "$PROG"
 			make
 			if [ ! -f "$PROG" ]; then

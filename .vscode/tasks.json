@@ -18,7 +18,8 @@
         "-lftprintf",
         "-lft",
         "-g",
-        "${workspaceFolder}/*.c",
+        "${workspaceFolder}/src/*.c",
+        "${workspaceFolder}/src/array/*.c",
         "-o",
         "${workspaceFolder}/debug_exe"
       ],

@@ -1,12 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
 sync() {
 
 	#SYNC Makefile SOURCES
-	SOURCES=$(ls *.c | tr '\n' ' ')
+	SOURCES=$(ls src/*.c src/**/*.c | sed 's;src/;;g' | tr '\n' ' ')
 
 	SED_COMMAND="s;^SOURCES	.*;SOURCES		=	$SOURCES;"
-
 	if [[ $(uname) == "Linux" ]];  then
 		sed -i "$SED_COMMAND" Makefile
 	else

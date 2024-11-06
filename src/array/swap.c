@@ -1,46 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_move.c                                        :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 23:20:10 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/10/30 00:26:04 by jvoisard         ###   ########.fr       */
+/*   Created: 2024/11/06 17:32:35 by jvoisard          #+#    #+#             */
+/*   Updated: 2024/11/06 19:08:55 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "array.h"
 
-void	swap(t_node *node)
+static void	swap(t_array *arr, int index_a, int index_b)
 {
 	int	value;
 
-	if (!node || node->prev == node->next)
-		return ;
-	value = node->value;
-	node->value = node->next->value;
-	node->next->value = value;
+	value = arr->values[index_a];
+	arr->values[index_a] = arr->values[index_b];
+	arr->values[index_b] = value;
+	update_delta(arr, index_a, index_b);
 }
 
-void	push(t_node **from, t_node **to)
+void	swap_a(t_array *arr)
 {
-	if (!*from)
+	if (arr->len - arr->cursor < 2)
 		return ;
-	node_add_before(to, (*from)->value);
-	node_remove(from);
+	swap(arr, arr->cursor, arr->cursor + 1);
 }
 
-void	rotate(t_node **node)
+void	swap_b(t_array *arr)
 {
-	if (!*node)
+	if (arr->cursor < 2)
 		return ;
-	*node = (*node)->next;
-}
-
-void	rotate_reverse(t_node **node)
-{
-	if (!*node)
-		return ;
-	*node = (*node)->prev;
+	swap(arr, arr->cursor - 2, arr->cursor - 1);
 }

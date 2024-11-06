@@ -1,8 +1,10 @@
 {
   "files.associations": {
-	"*.astro": "astro",
-	"push_swap.h": "c",
-	"ios": "c",
-	"__node_handle": "c"
-}
+    "*.astro": "astro",
+    "push_swap.h": "c",
+    "ios": "c",
+    "__node_handle": "c",
+    "move_utils.h": "c",
+    "array.h": "c"
+  }
 }
