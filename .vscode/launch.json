@@ -5,7 +5,7 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/debug_exe",
-      "args": ["4", "1", "3", "7", "2", "9"],
+      "args": ["0", "2", "1"],
       "stopAtEntry": false,
       "cwd": "${fileDirname}",
       "environment": [],

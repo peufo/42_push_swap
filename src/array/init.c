@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:09:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/07 13:24:38 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/07 19:09:35 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,5 @@ void	init_array(t_array *arr, int count, char **elements)
 	}
 	set_values_as_indexes(arr);
 	update_all_delta(arr);
+	update_score(arr);
 }
