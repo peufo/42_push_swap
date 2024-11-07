@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:57:07 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/06 22:00:04 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/07 18:27:55 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include "ft_printf.h"
 # include "libft.h"
 # include "array/array.h"
+
+typedef struct s_sequence_ctx
+{
+	t_move	*moves;
+	int		score_origin;
+	int		*sequence;
+}	t_sequence_ctx;
 
 void	resolve(t_array *arr);
 

@@ -11,7 +11,6 @@ success() {
 }
 
 watch() {
-
 	STATE_A=""
 	while [[ true ]]
 	do
@@ -32,7 +31,7 @@ watch() {
 
 			echo ""
 			PROG="./push_swap"
-			ARGS="1 2 5 3 4 6"
+			ARGS="1 3 2"
 			#ARGS="0 2 1"
 			rm -f "$PROG"
 			make

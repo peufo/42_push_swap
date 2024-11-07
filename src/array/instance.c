@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:19:44 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/07 13:59:11 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/07 18:08:29 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	copy_array(t_array *src, t_array *dest)
 {
 	dest->len = src->len;
 	dest->cursor = src->cursor;
-	dest->entropy = src->entropy;
+	dest->score_entropy = src->score_entropy;
+	dest->score_proximity = src->score_proximity;
+	dest->score_alignment = src->score_alignment;
+	dest->score = src->score;
 	dest->values = copy_values(src->len, src->values, dest->values);
 	dest->delta = copy_values(src->len, src->delta, dest->delta);
 }
