@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:50:20 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/07 20:13:52 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/07 23:22:50 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	update_score(t_array *arr)
 		update_proximity(arr);
 	update_alignement(arr);
 	arr->score = (1000 * arr->score_entropy);
-	arr->score += (100 * arr->score_proximity);
+	arr->score += (500 * arr->score_proximity);
 	arr->score += (10 * arr->score_alignement);
 	arr->score += arr->cursor;
 }

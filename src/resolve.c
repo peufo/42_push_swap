@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:59:37 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/07 20:39:35 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/07 23:23:01 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ static int	next_sequence(t_sequence_ctx ctx, t_array *arr, int index)
 	int		candidates[MAX_CANDIDATES];
 	int		i;
 
-	clone.delta = NULL;
-	clone.values = NULL;
+	init_empty_array(&clone);
 	i = 0;
 	while (i < 11)
 	{
@@ -112,6 +111,12 @@ void	resolve(t_array *arr)
 		.score_origin = arr->score,
 		.sequence = sequence}, arr, 0);
 	print_array(arr);
+
+	sequence[0] = 4;
+	sequence[1] = 4;
+	sequence[2] = 2;
+	sequence[3] = 3;
+
 	i = 0;
 	while (i < MAX_SEQUENCE_SIZE)
 	{

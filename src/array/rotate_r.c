@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:54:49 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/07 13:59:27 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/07 22:54:17 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	rotate_reverse_a(t_array *arr)
 
 void	rotate_reverse_b(t_array *arr)
 {
-	rotate_reverse(arr, 0, arr->cursor - 1);
+	if (arr->cursor > 0)
+		rotate_reverse(arr, 0, arr->cursor - 1);
 }
 
 void	rotate_reverse_ab(t_array *arr)

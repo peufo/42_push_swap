@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:19:44 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/07 20:15:12 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/07 22:26:54 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	copy_array(t_array *src, t_array *dest)
 	dest->score = src->score;
 	dest->values = copy_values(src->len, src->values, dest->values);
 	dest->delta = copy_values(src->len, src->delta, dest->delta);
+	dest->steps = copy_values(src->len, src->steps, dest->steps);
 }
 
 void	clean_array(t_array *arr)
@@ -47,5 +48,7 @@ void	clean_array(t_array *arr)
 		free(arr->values);
 	if (arr->delta)
 		free(arr->delta);
+	if (arr->steps)
+		free(arr->steps);
 	return ;
 }

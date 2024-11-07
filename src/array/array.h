@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:39:59 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/07 19:45:47 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/07 22:29:58 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_array
 	int	cursor;
 	int	*values;
 	int	*delta;
+	int	*steps;
 	int	score_entropy;
 	int	score_proximity;
 	int	score_alignement;
@@ -32,6 +33,7 @@ typedef void	(*t_move)(t_array *);
 void	print_array(t_array *arr);
 void	clean_array(t_array *arr);
 void	init_array(t_array *arr, int count, char **elements);
+void	init_empty_array(t_array *arr);
 void	copy_array(t_array *src, t_array *dest);
 void	update_delta(t_array *arr, int start, int end);
 void	update_all_delta(t_array *arr);

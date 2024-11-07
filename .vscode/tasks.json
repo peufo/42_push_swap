@@ -2,7 +2,7 @@
   "tasks": [
     {
       "type": "cppbuild",
-      "label": "C/C++: clang générer le fichier actif",
+      "label": "C: COMPILATION",
       "command": "/usr/bin/clang",
       "args": [
         "-fcolor-diagnostics",
