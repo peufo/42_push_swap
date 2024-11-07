@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:52:40 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/06 19:08:55 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/07 13:58:47 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,10 @@ void	rotate_a(t_array *arr)
 void	rotate_b(t_array *arr)
 {
 	rotate(arr, 0, arr->cursor - 1);
+}
+
+void	rotate_ab(t_array *arr)
+{
+	rotate_a(arr);
+	rotate_b(arr);
 }

@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:55:39 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/06 22:27:25 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/07 13:22:16 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	terminate(t_array *arr, char is_error)
 {
-	free_array(arr);
+	clean_array(arr);
 	if (is_error)
 		write(2, "Error\n", 7);
 	return (is_error);

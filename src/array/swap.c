@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:32:35 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/06 19:08:55 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/07 13:54:08 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ void	swap_b(t_array *arr)
 	if (arr->cursor < 2)
 		return ;
 	swap(arr, arr->cursor - 2, arr->cursor - 1);
+}
+
+void	swap_ab(t_array *arr)
+{
+	swap_a(arr);
+	swap_b(arr);
 }

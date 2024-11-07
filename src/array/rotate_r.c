@@ -6,16 +6,16 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:54:49 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/06 19:08:55 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/07 13:59:27 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array.h"
 
-static void	rotate_r(t_array *arr, int start, int end)
+static void	rotate_reverse(t_array *arr, int start, int end)
 {
 	int	value;
-	int i;
+	int	i;
 
 	i = end;
 	value = arr->values[i];
@@ -28,12 +28,18 @@ static void	rotate_r(t_array *arr, int start, int end)
 	update_delta(arr, start, end);
 }
 
-void	rotate_ra(t_array *arr)
+void	rotate_reverse_a(t_array *arr)
 {
-	rotate_r(arr, arr->cursor, arr->len - 1);
+	rotate_reverse(arr, arr->cursor, arr->len - 1);
 }
 
-void	rotate_rb(t_array *arr)
+void	rotate_reverse_b(t_array *arr)
 {
-	rotate_r(arr, 0, arr->cursor - 1);
+	rotate_reverse(arr, 0, arr->cursor - 1);
+}
+
+void	rotate_reverse_ab(t_array *arr)
+{
+	rotate_reverse_a(arr);
+	rotate_reverse_b(arr);
 }

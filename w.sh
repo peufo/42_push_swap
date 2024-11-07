@@ -27,12 +27,12 @@ watch() {
 				success "\nNORMINETTE OK"
 			else
 				warning "\nNORMINETTE ERROR"
-				#echo "$NORM_ERROR"
+				echo "$NORM_ERROR"
 			fi
 
 			echo ""
 			PROG="./push_swap"
-			ARGS="8 2 5 0 12 7 5"
+			ARGS="1 2 5 3 4 6"
 			#ARGS="0 2 1"
 			rm -f "$PROG"
 			make
@@ -42,8 +42,6 @@ watch() {
 				success "COMPILATION OK, RUN TEST..."
 				$PROG $ARGS
 			fi
-
-
 		fi
 		sleep 0.1
 	done

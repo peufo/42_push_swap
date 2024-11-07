@@ -5,6 +5,7 @@
     "ios": "c",
     "__node_handle": "c",
     "move_utils.h": "c",
-    "array.h": "c"
+    "array.h": "c",
+    "stdlib.h": "c"
   }
 }

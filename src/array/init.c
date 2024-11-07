@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:09:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/06 22:27:25 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/07 13:24:38 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array.h"
-#include "libft.h"
-
-void	free_array(t_array *arr)
-{
-	if (arr->values)
-		free(arr->values);
-	if (arr->delta)
-		free(arr->delta);
-	return ;
-}
 
 static int	get_indexof(t_array *arr, int value)
 {
@@ -41,7 +31,7 @@ static void	set_values_as_indexes(t_array *arr)
 
 	indexes = ft_calloc(arr->len, sizeof(*indexes));
 	if (!indexes)
-		return (free_array(arr));
+		return (clean_array(arr));
 	index = 0;
 	while (index < arr->len)
 	{
@@ -64,12 +54,12 @@ void	init_array(t_array *arr, int count, char **elements)
 		return ;
 	arr->delta = ft_calloc(count, sizeof(*(arr->delta)));
 	if (!arr->delta)
-		return (free_array(arr));
+		return (clean_array(arr));
 	index = 0;
 	while (index < count)
 	{
 		if (!ft_isint(elements[index]))
-			return (free_array(arr));
+			return (clean_array(arr));
 		arr->values[index] = ft_atoi(elements[index]);
 		index++;
 	}
