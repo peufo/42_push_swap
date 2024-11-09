@@ -6,6 +6,7 @@
     "__node_handle": "c",
     "move_utils.h": "c",
     "array.h": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "__bit_reference": "c"
   }
 }

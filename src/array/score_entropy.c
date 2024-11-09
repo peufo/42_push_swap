@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:58:09 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/08 00:01:05 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/08 00:19:00 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,13 @@ static void	update_steps(t_array *arr)
 {
 	int	i;
 
-	if (arr->cursor > 0)
+
+	arr->steps[0] = get_step(arr, 0, arr->len - 1);
+	i = 1;
+	while (i < arr->len)
 	{
-		arr->steps[0] = get_step(arr, 0, arr->cursor - 1);
-		i = 1;
-		while (i < arr->cursor)
-		{
-			arr->steps[i] = get_step(arr, i, i - 1);
-			i++;
-		}
-	}
-	if (arr->cursor < arr->len)
-	{
-		arr->steps[arr->cursor] = get_step(arr, arr->cursor, arr->len - 1);
-		i = arr->cursor + 1;
-		while (i < arr->len)
-		{
-			arr->steps[i] = get_step(arr, i, i - 1);
-			i++;
-		}
+		arr->steps[i] = get_step(arr, i, i - 1);
+		i++;
 	}
 }
 

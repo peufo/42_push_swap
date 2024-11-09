@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   candidate.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/29 19:57:07 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/08 13:27:26 by jvoisard         ###   ########.fr       */
+/*   Created: 2024/11/08 13:24:39 by jvoisard          #+#    #+#             */
+/*   Updated: 2024/11/09 23:45:31 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include "ft_printf.h"
-# include "libft.h"
+#ifndef CANDIDATE_H
+# define CANDIDATE_H
+# define MAC_SEQUENCE_LEN	5
+# define MAX_CANDIDATES	3
 # include "array/array.h"
-# include "candidate.h"
 
-void	resolve(t_array *arr);
+typedef struct s_candidate t_candidate;
+struct s_candidate
+{
+	t_array	arr;
+	int		sequence[MAC_SEQUENCE_LEN];
+};
+
+t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep);
 
 #endif
