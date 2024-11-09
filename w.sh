@@ -31,7 +31,8 @@ watch() {
 
 			echo ""
 			PROG="./push_swap"
-			ARGS="2 1 6 3"
+			#ARGS="2 1 6 3"
+			ARGS="22 1 3 65 5 8 20 74 35 54"
 			rm -f "$PROG"
 			make
 			if [ ! -f "$PROG" ]; then
