@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:57:07 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/08 13:27:26 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/10 00:34:26 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "libft.h"
 # include "array/array.h"
 # include "candidate.h"
+# define PRINT_ARR_STATE 1
 
 void	resolve(t_array *arr);
 

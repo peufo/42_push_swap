@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:57:24 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/10 00:14:28 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/10 00:43:44 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	update_proximity(t_array *arr)
 	int	score_center;
 
 	entropy_a = get_entropi_sum(arr, 0, arr->cursor - 1);
-	entropy_b = get_entropi_sum(arr, arr->cursor + 1, arr->len - 1);
+	entropy_b = get_entropi_sum(arr, arr->cursor, arr->len - 1);
 	if (entropy_a > entropy_b)
 		score_center = entropy_a - entropy_b;
 	else
