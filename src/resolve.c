@@ -6,11 +6,20 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:59:37 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/09 23:44:33 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/10 00:11:39 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	reset_sequence(int sequence[MAX_SEQUENCE_LEN])
+{
+	int	i;
+
+	i = 0;
+	while (i < MAX_SEQUENCE_LEN)
+		sequence[i++] = -1;
+}
 
 void	resolve(t_array *arr)
 {
@@ -22,18 +31,19 @@ void	resolve(t_array *arr)
 	init_moves(moves);
 	init_moves_keys(moves_keys);
 	print_array(arr);
-	next = (t_candidate){
-		.arr = *arr,
-		.sequence = { [0 ... MAC_SEQUENCE_LEN - 1] = -1 }
-	};
-	next = next_candidate(&next, moves, 0);
-	i = 0;
-	while (i < MAC_SEQUENCE_LEN && next.sequence[i] != -1)
+	next.arr = *arr;
+	while (next.arr.score > 0)
 	{
-		ft_printf("move: %s\n", moves_keys[next.sequence[i]]);
-		moves[next.sequence[i]](arr);
-		update_score(arr);
-		print_array(arr);
-		i++;
+		reset_sequence(next.sequence);
+		next = next_candidate(&next, moves, 0);
+		i = 0;
+		while (i < MAX_SEQUENCE_LEN && next.sequence[i] != -1)
+		{
+			ft_printf("move: %s\n", moves_keys[next.sequence[i]]);
+			moves[next.sequence[i]](arr);
+			update_score(arr);
+			print_array(arr);
+			i++;
+		}
 	}
 }

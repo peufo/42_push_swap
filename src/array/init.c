@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:09:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/07 22:30:02 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/10 00:14:05 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	set_values_as_indexes(t_array *arr)
 	arr->values = indexes;
 	return ;
 }
+
 void	init_empty_array(t_array *arr)
 {
 	arr->cursor = 0;

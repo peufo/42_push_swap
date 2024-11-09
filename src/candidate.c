@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 00:40:18 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/09 23:45:14 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/10 00:13:51 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	copy_candidate(t_candidate *src, t_candidate *dest)
 	init_empty_array(&(dest->arr));
 	copy_array(&(src->arr), &(dest->arr));
 	deep = 0;
-	while (deep < MAC_SEQUENCE_LEN)
+	while (deep < MAX_SEQUENCE_LEN)
 	{
 		dest->sequence[deep] = src->sequence[deep];
 		deep++;
@@ -35,7 +35,7 @@ static t_candidate	new_candidate(t_candidate *parent, t_move *moves, int move)
 	moves[move](&(candidate.arr));
 	update_score(&(candidate.arr));
 	deep = 0;
-	while (deep < MAC_SEQUENCE_LEN && candidate.sequence[deep] != -1)
+	while (deep < MAX_SEQUENCE_LEN && candidate.sequence[deep] != -1)
 		deep++;
 	candidate.sequence[deep] = move;
 	return (candidate);
@@ -85,31 +85,31 @@ t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)
 	t_candidate	candidates[11];
 	t_candidate	*selected[MAX_CANDIDATES];
 	t_candidate	selected_next[MAX_CANDIDATES];
-	int			index;
+	int			i;
 	int			better_candidate;
 
-	index = 0;
-	while (index < 11)
+	i = 0;
+	while (i < 11)
 	{
-		candidates[index] = new_candidate(parent, moves, index);
-		index++;
+		candidates[i] = new_candidate(parent, moves, i);
+		i++;
 	}
 	select_candidates(candidates, selected);
-	if (deep == MAC_SEQUENCE_LEN - 1 || selected[0]->arr.score == 0)
+	if (deep == MAX_SEQUENCE_LEN - 1 || selected[0]->arr.score == 0)
 		return (*(selected[0]));
-	index = 0;
-	while (index < MAX_CANDIDATES)
+	i = 0;
+	while (i < MAX_CANDIDATES)
 	{
-		selected_next[index] = next_candidate(selected[index], moves, deep + 1);
-		index++;
+		selected_next[i] = next_candidate(selected[i], moves, deep + 1);
+		i++;
 	}
 	better_candidate = 0;
-	index = 0;
-	while (index < MAX_CANDIDATES)
+	i = 0;
+	while (i < MAX_CANDIDATES)
 	{
-		if (selected_next[index].arr.score < selected_next[better_candidate].arr.score)
-			better_candidate = index;
-		index++;
+		if (selected_next[i].arr.score < selected_next[better_candidate].arr.score)
+			better_candidate = i;
+		i++;
 	}
 	return (selected_next[better_candidate]);
 }

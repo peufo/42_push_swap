@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:58:09 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/08 00:19:00 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/10 00:14:13 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static int	get_step(t_array *arr, int index_a, int index_b)
 static void	update_steps(t_array *arr)
 {
 	int	i;
-
 
 	arr->steps[0] = get_step(arr, 0, arr->len - 1);
 	i = 1;
