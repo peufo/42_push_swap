@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:52:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/10 00:33:25 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/10 11:39:32 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	print_n(char *str, int n)
 	while (n-- > 0)
 		ft_printf(str);
 }
-
+/*
 static void	print_delta(int index, int delta, int len)
 {
 	if (!delta)
@@ -43,6 +43,7 @@ static void	print_delta(int index, int delta, int len)
 	print_n("─", -delta * 4 - 1);
 	ft_printf("┘\n");
 }
+*/
 
 void	print_array(t_array *arr)
 {
@@ -63,6 +64,7 @@ void	print_array(t_array *arr)
 	while (index < arr->len)
 		ft_printf(COL, arr->steps[index++]);
 	ft_printf("\n");
+	/*
 	index = 0;
 	while (index < arr->len)
 	{
@@ -70,4 +72,5 @@ void	print_array(t_array *arr)
 		index++;
 	}
 	ft_printf("\n");
+	*/
 }
