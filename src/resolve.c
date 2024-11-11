@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:59:37 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/11 17:38:05 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/11 18:30:35 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	resolve(t_array *arr)
 	init_moves_keys(moves_keys);
 	next.arr = *arr;
 	count = 0;
-	while (arr->score > 0 && count < 10)
+	print_array(arr);
+	while (arr->score > 0 && count < 30)
 	{
 		next.arr = *arr;
 		reset_sequence(next.sequence);

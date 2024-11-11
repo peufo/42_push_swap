@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 00:40:18 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/11 17:32:56 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/11 18:25:27 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int	get_sequence_len(t_candidate *candidate)
 	return (len);
 }
 
+/*
 static void	print_candidate(t_candidate *candidate, int deep)
 {
 	int		i;
@@ -47,6 +48,7 @@ static void	print_candidate(t_candidate *candidate, int deep)
 	}
 	ft_printf("][%d] (%d)\n", len, candidate->arr.score);
 }
+*/
 
 static void	copy_candidate(t_candidate *src, t_candidate *dest)
 {
@@ -152,6 +154,6 @@ t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)
 			better_candidate = i;
 		i++;
 	}
-	print_candidate(&selected_next[better_candidate], deep);
+	//print_candidate(&selected_next[better_candidate], deep);
 	return (selected_next[better_candidate]);
 }
