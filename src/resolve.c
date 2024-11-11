@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:59:37 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/10 00:39:37 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:24:28 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,21 @@ void	resolve(t_array *arr)
 	init_moves_keys(moves_keys);
 	next.arr = *arr;
 	count = 0;
-	while (next.arr.score > 0)
+	while (arr->score > 0)
 	{
+		next.arr = *arr;
 		reset_sequence(next.sequence);
 		next = next_candidate(&next, moves, 0);
 		i = 0;
-		while (i < MAX_SEQUENCE_LEN && next.sequence[i] != -1)
-		{
+		//while (i < MAX_SEQUENCE_LEN && next.sequence[i] != -1)
+		//{
 			ft_printf("%s\n", moves_keys[next.sequence[i]]);
 			moves[next.sequence[i]](arr);
 			update_score(arr);
 			print_array(arr);
 			i++;
 			count++;
-		}
+		//}
 	}
 	ft_printf("FOUND IN %d MOVES\n", count);
 }

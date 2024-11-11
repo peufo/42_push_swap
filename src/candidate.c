@@ -6,11 +6,39 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 00:40:18 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/10 00:13:51 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:47:12 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "candidate.h"
+
+static int	get_sequence_len(t_candidate *candidate)
+{
+	int	len;
+
+	len = 0;
+	while (len < MAX_SEQUENCE_LEN && candidate->sequence[len] != -1)
+		len++;
+	return (len);
+}
+
+static void	print_candidate(t_candidate *candidate)
+{
+	int		i;
+	int		len;
+	char	moves_keys[11][4];
+
+	len = get_sequence_len(candidate);
+	init_moves_keys(moves_keys);
+	i = 0;
+	ft_printf("[");
+	while (i < MAX_SEQUENCE_LEN && candidate->sequence[i] != -1)
+	{
+		ft_printf("%s,", moves_keys[candidate->sequence[i]]);
+		i++;
+	}
+	ft_printf("][%d] (%d)\n", len, candidate->arr.score);
+}
 
 static void	copy_candidate(t_candidate *src, t_candidate *dest)
 {
@@ -79,6 +107,7 @@ static void	select_candidates(t_candidate *candidates, t_candidate **selected)
 	}
 }
 
+
 // TODO, CLEAN ALL OTHER ARRAYS WHEN RETURN A VALUE
 t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)
 {
@@ -95,21 +124,27 @@ t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)
 		i++;
 	}
 	select_candidates(candidates, selected);
-	if (deep == MAX_SEQUENCE_LEN - 1 || selected[0]->arr.score == 0)
+	if (selected[0]->arr.score == 0)
 		return (*(selected[0]));
 	i = 0;
 	while (i < MAX_CANDIDATES)
 	{
-		selected_next[i] = next_candidate(selected[i], moves, deep + 1);
+		if (deep == MAX_SEQUENCE_LEN -1)
+			selected_next[i] = *selected[i];
+		else
+			selected_next[i] = next_candidate(selected[i], moves, deep + 1);
 		i++;
 	}
 	better_candidate = 0;
 	i = 0;
 	while (i < MAX_CANDIDATES)
 	{
-		if (selected_next[i].arr.score < selected_next[better_candidate].arr.score)
+		if (selected_next[i].arr.score <= selected_next[better_candidate].arr.score
+		&& get_sequence_len(selected_next + i) <= get_sequence_len(selected_next + better_candidate))
 			better_candidate = i;
 		i++;
 	}
+	if (deep < 2)
+		print_candidate(&selected_next[better_candidate]);
 	return (selected_next[better_candidate]);
 }
