@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 00:40:18 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/11 18:25:27 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/11 22:24:56 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ static void	select_candidates(t_candidate *candidates, t_candidate **selected)
 		selected_index++;
 	}
 }
-
 
 // TODO, CLEAN ALL OTHER ARRAYS WHEN RETURN A VALUE
 t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)

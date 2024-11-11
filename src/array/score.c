@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:50:20 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/11 18:44:20 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/11 23:46:54 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	update_alignement(t_array *arr)
 	int	i;
 	int	sum;
 
-	if (!arr->score_alignement)
+	if (!arr->score_entropy)
 	{
 		arr->score_alignement = 0;
 		return;
@@ -31,14 +31,56 @@ static void	update_alignement(t_array *arr)
 	arr->score_alignement = (sum / arr->len);
 }
 
+static void	update_proximity(t_array *arr)
+{
+	int	i;
+	int	proximity;
+	
+	if (!arr->score_entropy)
+	{
+		arr->score_proximity = 0;
+		return ;
+	}
+	proximity = INT_MAX;
+	if (arr->cursor > 0)
+	{
+		i = 0;
+		while (i < arr->cursor && !arr->steps[i])
+			i++;
+		if (i < arr->cursor)
+			proximity = i;
+		i = arr->cursor - 1;
+		while (i > 0 && !arr->steps[i])
+			i--;
+		if (i > 0 && proximity > arr->cursor - i)
+			proximity = arr->cursor - i;
+	}
+	if (arr->cursor < arr->len - 1)
+	{
+		i = arr->cursor;
+		while (i < arr->len && !arr->steps[i])
+			i++;
+		if (i < arr->len && proximity > i - arr->cursor)
+			proximity = i - arr->cursor;
+		i = arr->len - 1;
+		while (i > arr->cursor && !arr->steps[i])
+			i--;
+		if (i > arr->cursor && proximity > arr->len - i - 1)
+			proximity = arr->len - i - 1;
+	}
+	arr->score_proximity = proximity;
+}
+
 void	update_score(t_array *arr)
 {
 	update_entropy(arr);
+	update_balance(arr);
 	update_proximity(arr);
 	update_alignement(arr);
 	arr->score = (1000 * arr->score_entropy);
-	arr->score += (200 * arr->score_proximity);
+	arr->score += (200 * arr->score_balance);
 	arr->score += (10 * arr->score_alignement);
+	arr->score += (5 * arr->score_proximity);
 	if (!arr->score_entropy)
 	{
 		arr->score += (10 * arr->cursor);

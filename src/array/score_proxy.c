@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   score_proxy.c                                      :+:      :+:    :+:   */
+/*   score_proximity.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 18:57:24 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/11 18:39:16 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/11 22:30:43 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	get_entropi_sum(t_array *arr, int start, int end)
 	return (sum);
 }
 
-void	update_proximity(t_array *arr)
+void	update_balance(t_array *arr)
 {
 	int	entropy_a;
 	int	entropy_b;
@@ -30,7 +30,7 @@ void	update_proximity(t_array *arr)
 
 	if (!arr->score_entropy)
 	{
-		arr->score_proximity = 0;
+		arr->score_balance = 0;
 		return;
 	}
 	entropy_a = get_entropi_sum(arr, 0, arr->cursor - 1);
@@ -39,5 +39,5 @@ void	update_proximity(t_array *arr)
 		score_center = entropy_a - entropy_b;
 	else
 		score_center = entropy_b - entropy_a;
-	arr->score_proximity = score_center;
+	arr->score_balance = score_center;
 }
