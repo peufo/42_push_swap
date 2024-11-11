@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 00:40:18 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/11 16:47:12 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/11 17:32:56 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	get_sequence_len(t_candidate *candidate)
 	return (len);
 }
 
-static void	print_candidate(t_candidate *candidate)
+static void	print_candidate(t_candidate *candidate, int deep)
 {
 	int		i;
 	int		len;
@@ -31,7 +31,15 @@ static void	print_candidate(t_candidate *candidate)
 	len = get_sequence_len(candidate);
 	init_moves_keys(moves_keys);
 	i = 0;
+	while (i < deep - 1)
+	{
+		ft_printf("│ ");
+		i++;
+	}
+	if (deep)
+		ft_printf("┌");
 	ft_printf("[");
+	i = 0;
 	while (i < MAX_SEQUENCE_LEN && candidate->sequence[i] != -1)
 	{
 		ft_printf("%s,", moves_keys[candidate->sequence[i]]);
@@ -144,7 +152,6 @@ t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)
 			better_candidate = i;
 		i++;
 	}
-	if (deep < 2)
-		print_candidate(&selected_next[better_candidate]);
+	print_candidate(&selected_next[better_candidate], deep);
 	return (selected_next[better_candidate]);
 }
