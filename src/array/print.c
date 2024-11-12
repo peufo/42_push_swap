@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:52:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/11 23:14:14 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:22:24 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,13 @@ void	print_array(t_array *arr)
 	int	index;
 
 	print_n("    ", arr->cursor);
-	ft_printf("👇 %d (e: %d, b: %d, p: %d, a: %d)\n", arr->score,
-		arr->score_entropy, arr->score_balance, arr->score_proximity, arr->score_alignement);
+	ft_printf("👇 %d (e: %d, b: %d, p: %d, a: %d)\n",
+		arr->score,
+		arr->score_entropy,
+		arr->score_balance,
+		arr->score_proximity,
+		arr->score_alignement
+	);
 	index = 0;
 	while (index < arr->len)
 		ft_printf(COL, arr->values[index++]);

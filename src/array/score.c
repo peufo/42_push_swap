@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:50:20 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/11 23:46:54 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:46:54 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,13 @@ static void	update_alignement(t_array *arr)
 	int	i;
 	int	sum;
 
-	if (!arr->score_entropy)
-	{
-		arr->score_alignement = 0;
-		return;
-	}
 	sum = 0;
 	i = 0;
 	while (i < arr->len)
-		sum += arr->delta[i++];
-	if (sum < 0)
-		sum = -sum;
+		if (arr->delta[i] > 0)
+			sum += arr->delta[i++];
+		else
+			sum -= arr->delta[i++];
 	arr->score_alignement = (sum / arr->len);
 }
 
@@ -78,8 +74,8 @@ void	update_score(t_array *arr)
 	update_proximity(arr);
 	update_alignement(arr);
 	arr->score = (1000 * arr->score_entropy);
-	arr->score += (200 * arr->score_balance);
-	arr->score += (10 * arr->score_alignement);
+	arr->score += (100 * arr->score_balance);
+	arr->score += (5 * arr->score_alignement);
 	arr->score += (5 * arr->score_proximity);
 	if (!arr->score_entropy)
 	{
