@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 00:40:18 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/11 22:24:56 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:02:15 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ static int	get_sequence_len(t_candidate *candidate)
 	return (len);
 }
 
-/*
-static void	print_candidate(t_candidate *candidate, int deep)
-{
-	int		i;
-	int		len;
-	char	moves_keys[11][4];
 
-	len = get_sequence_len(candidate);
+void	print_candidate(t_candidate *candidate, int deep)
+{
+	char	moves_keys[11][4];
+	int		i;
+
 	init_moves_keys(moves_keys);
 	i = 0;
 	while (i < deep - 1)
@@ -40,15 +38,26 @@ static void	print_candidate(t_candidate *candidate, int deep)
 	if (deep)
 		ft_printf("┌");
 	ft_printf("[");
+	(void)candidate;
 	i = 0;
 	while (i < MAX_SEQUENCE_LEN && candidate->sequence[i] != -1)
 	{
 		ft_printf("%s,", moves_keys[candidate->sequence[i]]);
 		i++;
 	}
-	ft_printf("][%d] (%d)\n", len, candidate->arr.score);
+
+	/*
+	ft_printf("][%d] {e: %d, b: %d, p: %d, a: %d} -> %d\n",
+		get_sequence_len(candidate),
+		candidate->arr.score_entropy,
+		candidate->arr.score_balance,
+		candidate->arr.score_proximity,
+		candidate->arr.score_alignement,
+		candidate->arr.score
+	);
+	*/
 }
-*/
+
 
 static void	copy_candidate(t_candidate *src, t_candidate *dest)
 {
@@ -153,6 +162,7 @@ t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)
 			better_candidate = i;
 		i++;
 	}
+	ft_printf("%s", "wtf");
 	//print_candidate(&selected_next[better_candidate], deep);
 	return (selected_next[better_candidate]);
 }
