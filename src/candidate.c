@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   candidate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
+/*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 00:40:18 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/12 19:02:15 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/13 21:16:29 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,15 @@ static void	select_candidates(t_candidate *candidates, t_candidate **selected)
 	}
 }
 
+void test(int deep)
+{
+	int a[4];
+
+	if (deep)
+		test(deep - 1);
+	(void)a;
+}
+
 // TODO, CLEAN ALL OTHER ARRAYS WHEN RETURN A VALUE
 t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)
 {
@@ -135,6 +144,7 @@ t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)
 	int			i;
 	int			better_candidate;
 
+	test(5);
 	i = 0;
 	while (i < 11)
 	{
@@ -162,7 +172,7 @@ t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)
 			better_candidate = i;
 		i++;
 	}
-	ft_printf("%s", "wtf");
+
 	//print_candidate(&selected_next[better_candidate], deep);
 	return (selected_next[better_candidate]);
 }
