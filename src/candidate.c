@@ -6,7 +6,7 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 00:40:18 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/13 21:16:29 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/13 21:26:09 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)
 	int			i;
 	int			better_candidate;
 
-	test(5);
+
 	i = 0;
 	while (i < 11)
 	{
@@ -172,7 +172,7 @@ t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)
 			better_candidate = i;
 		i++;
 	}
-
+	//test(5);
 	//print_candidate(&selected_next[better_candidate], deep);
 	return (selected_next[better_candidate]);
 }
