@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:59:37 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/14 13:02:16 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/14 13:02:58 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ void	resolve(t_array *arr)
 		//print_array(arr);
 		count++;
 	}
-	ft_printf("FOUND IN %d MOVES\n", count);
+	//ft_printf("FOUND IN %d MOVES\n", count);
 }

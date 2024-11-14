@@ -26,7 +26,7 @@ watch() {
 				success "\nNORMINETTE OK"
 			else
 				warning "\nNORMINETTE ERROR"
-				echo "$NORM_ERROR"
+				#echo "$NORM_ERROR"
 			fi
 
 			echo ""
