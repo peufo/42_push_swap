@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   candidate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 00:40:18 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/13 21:26:09 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/14 13:02:42 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,6 @@ t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)
 	int			i;
 	int			better_candidate;
 
-
 	i = 0;
 	while (i < 11)
 	{
@@ -172,7 +171,7 @@ t_candidate	next_candidate(t_candidate *parent, t_move *moves, int deep)
 			better_candidate = i;
 		i++;
 	}
-	//test(5);
+	test(30);
 	//print_candidate(&selected_next[better_candidate], deep);
 	return (selected_next[better_candidate]);
 }
