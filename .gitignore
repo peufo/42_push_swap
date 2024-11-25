@@ -3,4 +3,5 @@ push_swap
 libftprintf.a
 libft.a
 *.dSYM
+*.wasm
 debug_exe

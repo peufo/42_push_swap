@@ -25,6 +25,9 @@ $(DIR_BUILD):
 $(LIBS):
 	@make -C $@
 
+wasm:
+	docker run --rm -v $(shell pwd):/src emscripten/emsdk emcc src/*.c src/**/*.c lib/**/*.c -I $(FT_PRINTF) -I $(LIBFT) -o $(NAME).wasm -s WASM=1
+
 clean:
 	make clean -C $(FT_PRINTF)
 	make clean -C $(LIBFT)
