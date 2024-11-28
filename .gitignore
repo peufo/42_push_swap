@@ -2,6 +2,7 @@ build
 push_swap
 libftprintf.a
 libft.a
+.DS_Store
 *.dSYM
 *.wasm
 debug_exe

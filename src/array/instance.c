@@ -3,53 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   instance.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 13:19:44 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/13 20:26:30 by jvoisard         ###   ########.fr       */
+/*   Created: 2024/11/06 19:09:29 by jvoisard          #+#    #+#             */
+/*   Updated: 2024/11/28 17:42:31 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array.h"
 
-static int	*copy_values(int len, int *src, int *dest)
+static int	get_indexof(t_array *arr, int value)
 {
 	int	i;
+	int	count;
 
-	if (!dest)
-		dest = ft_calloc(len, sizeof(*src));
-	if (!dest)
-		return (0);
 	i = 0;
-	while (i < len)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	return (dest);
+	count = 0;
+	while (i < arr->len)
+		count += arr->values[i++] < value;
+	return (count);
 }
 
-void	copy_array(t_array *src, t_array *dest)
+static void	set_values_as_indexes(t_array *arr)
 {
-	dest->len = src->len;
-	dest->cursor = src->cursor;
-	dest->score_entropy = src->score_entropy;
-	dest->score_balance = src->score_balance;
-	dest->score_proximity = src->score_proximity;
-	dest->score_alignement = src->score_alignement;
-	dest->score = src->score;
-	dest->values = copy_values(src->len, src->values, dest->values);
-	dest->delta = copy_values(src->len, src->delta, dest->delta);
-	dest->steps = copy_values(src->len, src->steps, dest->steps);
+	int	*indexes;
+	int	index;
+
+	indexes = ft_calloc(arr->len, sizeof(*indexes));
+	if (!indexes)
+		return (clean_array(arr));
+	index = 0;
+	while (index < arr->len)
+	{
+		indexes[index] = get_indexof(arr, arr->values[index]);
+		index++;
+	}
+	free(arr->values);
+	arr->values = indexes;
+	return ;
+}
+
+void	init_array(t_array *arr, int count, char **elements)
+{
+	int	index;
+
+	arr->cursor = 0;
+	arr->len = count;
+	arr->values = ft_calloc(count, sizeof(*(arr->values)));
+	arr->sequence = ft_calloc(count * 20, 4);
+	arr->writer = arr->sequence;
+	if (!arr->values || !arr->sequence)
+		return (clean_array(arr));
+	index = 0;
+	while (index < count)
+	{
+		if (!ft_isint(elements[index]))
+			return (clean_array(arr));
+		arr->values[index] = ft_atoi(elements[index]);
+		index++;
+	}
+	set_values_as_indexes(arr);
 }
 
 void	clean_array(t_array *arr)
 {
 	if (arr->values)
 		free(arr->values);
-	if (arr->delta)
-		free(arr->delta);
-	if (arr->steps)
-		free(arr->steps);
+	if (arr->sequence)
+		free(arr->sequence);
 	return ;
 }

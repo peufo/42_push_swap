@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:52:40 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/07 13:58:47 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:02:28 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,23 @@ static void	rotate(t_array *arr, int start, int end)
 		i++;
 	}
 	arr->values[i] = value;
-	update_delta(arr, start, end);
 }
 
 void	rotate_a(t_array *arr)
 {
 	rotate(arr, arr->cursor, arr->len - 1);
+	log_move(arr, "ra");
 }
 
 void	rotate_b(t_array *arr)
 {
 	rotate(arr, 0, arr->cursor - 1);
+	log_move(arr, "rb");
 }
 
 void	rotate_ab(t_array *arr)
 {
-	rotate_a(arr);
-	rotate_b(arr);
+	rotate(arr, arr->cursor, arr->len - 1);
+	rotate(arr, 0, arr->cursor - 1);
+	log_move(arr, "rr");
 }
