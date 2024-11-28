@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:09:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 19:50:58 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 20:18:42 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	set_values_as_indexes(t_stack *stack)
 
 	indexes = ft_calloc(stack->len, sizeof(*indexes));
 	if (!indexes)
-		return (clean_stack(stack));
+		return (stack_clean(stack));
 	index = 0;
 	while (index < stack->len)
 	{
@@ -43,7 +43,7 @@ static void	set_values_as_indexes(t_stack *stack)
 	return ;
 }
 
-void	init_stack(t_stack *stack, int count, char **elements)
+void	stack_init(t_stack *stack, int count, char **elements)
 {
 	int	index;
 
@@ -53,20 +53,19 @@ void	init_stack(t_stack *stack, int count, char **elements)
 	stack->sequence = ft_calloc(count * 20, 4);
 	stack->logger = stack->sequence;
 	if (!stack->values || !stack->sequence)
-		return (clean_stack(stack));
+		return (stack_clean(stack));
 	index = 0;
 	while (index < count)
 	{
 		if (!ft_isint(elements[index]))
-			return (clean_stack(stack));
+			return (stack_clean(stack));
 		stack->values[index] = ft_atoi(elements[index]);
 		index++;
 	}
-	set_moves(stack);
 	set_values_as_indexes(stack);
 }
 
-void	clean_stack(t_stack *stack)
+void	stack_clean(t_stack *stack)
 {
 	if (stack->values)
 		free(stack->values);

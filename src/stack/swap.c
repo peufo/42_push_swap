@@ -6,13 +6,13 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:32:35 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 18:49:07 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 20:17:34 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-static void	_swap_a(t_stack *stack)
+static void	swap_a(t_stack *stack)
 {
 	int	value;
 	int	a;
@@ -27,7 +27,7 @@ static void	_swap_a(t_stack *stack)
 	stack->values[b] = value;
 }
 
-static void	_swap_b(t_stack *stack)
+static void	swap_b(t_stack *stack)
 {
 	int	value;
 	int	a;
@@ -42,21 +42,21 @@ static void	_swap_b(t_stack *stack)
 	stack->values[b] = value;
 }
 
-void	swap_a(t_stack *stack)
+void	move_sa(t_stack *stack)
 {
-	_swap_a(stack);
-	log_move(stack, "sa");
+	swap_a(stack);
+	move_log(stack, "sa");
 }
 
-void	swap_b(t_stack *stack)
+void	move_sb(t_stack *stack)
 {
-	_swap_b(stack);
-	log_move(stack, "sb");
+	swap_b(stack);
+	move_log(stack, "sb");
 }
 
-void	swap_ab(t_stack *stack)
+void	move_ss(t_stack *stack)
 {
-	_swap_a(stack);
-	_swap_b(stack);
-	log_move(stack, "ss");
+	swap_a(stack);
+	swap_b(stack);
+	move_log(stack, "ss");
 }

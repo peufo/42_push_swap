@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:55:39 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 19:49:12 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 20:18:42 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	terminate(t_stack *stack, char is_error)
 {
-	clean_stack(stack);
+	stack_clean(stack);
 	if (is_error)
 		write(2, "Error\n", 7);
 	return (is_error);
@@ -48,7 +48,7 @@ int	main(int ac, char **av)
 		elements = av + 1;
 		count = ac - 1;
 	}
-	init_stack(&stack, count, elements);
+	stack_init(&stack, count, elements);
 	if (!stack.values)
 		terminate(&stack, 1);
 	resolve(&stack);

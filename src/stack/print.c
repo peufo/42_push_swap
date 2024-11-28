@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:52:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 18:08:48 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 20:18:23 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	print_n(char *str, int n)
 		ft_printf(str);
 }
 
-void	print_stack(t_stack *stack)
+void	stack_print(t_stack *stack)
 {
 	int	index;
 

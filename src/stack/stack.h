@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:39:59 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 20:00:04 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 20:18:42 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,7 @@
 
 typedef struct s_stack	t_stack;
 typedef void			(*t_move)(t_stack *);
-typedef struct s_moves
-{
-	t_move	sa;
-	t_move	sb;
-	t_move	ss;
-	t_move	pa;
-	t_move	pb;
-	t_move	ra;
-	t_move	rb;
-	t_move	rr;
-	t_move	rra;
-	t_move	rrb;
-	t_move	rrr;
-}	t_moves;
+
 struct s_stack
 {
 	int		len;
@@ -39,26 +26,23 @@ struct s_stack
 	int		*values;
 	char	*sequence;
 	char	*logger;
-	t_moves	moves;
 };
 
-void	print_stack(t_stack *stack);
-void	clean_stack(t_stack *stack);
-void	init_stack(t_stack *stack, int count, char **elements);
+void	stack_print(t_stack *stack);
+void	stack_clean(t_stack *stack);
+void	stack_init(t_stack *stack, int count, char **elements);
 
-void	set_moves(t_stack *stack);
-void	log_move(t_stack *stack, char *move);
-
-void	swap_a(t_stack *stack);
-void	swap_b(t_stack *stack);
-void	swap_ab(t_stack *stack);
-void	push_a(t_stack *stack);
-void	push_b(t_stack *stack);
-void	rotate_a(t_stack *stack);
-void	rotate_b(t_stack *stack);
-void	rotate_ab(t_stack *stack);
-void	rotate_reverse_a(t_stack *stack);
-void	rotate_reverse_b(t_stack *stack);
-void	rotate_reverse_ab(t_stack *stack);
+void	move_log(t_stack *stack, char *move);
+void	move_sa(t_stack *stack);
+void	move_sb(t_stack *stack);
+void	move_ss(t_stack *stack);
+void	move_pa(t_stack *stack);
+void	move_pb(t_stack *stack);
+void	move_ra(t_stack *stack);
+void	move_rb(t_stack *stack);
+void	move_rr(t_stack *stack);
+void	move_rra(t_stack *stack);
+void	move_rrb(t_stack *stack);
+void	move_rrr(t_stack *stack);
 
 #endif
