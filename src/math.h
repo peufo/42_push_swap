@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   resolve.c                                          :+:      :+:    :+:   */
+/*   math.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 21:59:37 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 18:47:15 by jvoisard         ###   ########.fr       */
+/*   Created: 2024/11/28 18:42:13 by jvoisard          #+#    #+#             */
+/*   Updated: 2024/11/28 18:44:55 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef MATH_H
+# define MATH_H
 
-static void	split_a(t_stack *stack, int len)
-{
-	(void)stack;
-	(void)len;
-}
+int	min(int a, int b);
+int	max(int a, int b);
 
-void	resolve(t_stack *stack)
-{
-	t_moves	moves;
-
-	moves = get_moves();
-	moves.pa(stack);
-	moves.ra(stack);
-	moves.pb(stack);
-	split_a(stack, stack->len);
-	ft_putstr(stack->sequence);
-}
+#endif

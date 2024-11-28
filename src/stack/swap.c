@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:32:35 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 18:08:48 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:49:07 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static void	_swap_a(t_stack *stack)
 	stack->values[a] = stack->values[b];
 	stack->values[b] = value;
 }
+
 static void	_swap_b(t_stack *stack)
 {
 	int	value;
@@ -41,7 +42,8 @@ static void	_swap_b(t_stack *stack)
 	stack->values[b] = value;
 }
 
-void	swap_a(t_stack *stack) {
+void	swap_a(t_stack *stack)
+{
 	_swap_a(stack);
 	log_move(stack, "sa");
 }

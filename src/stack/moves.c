@@ -6,15 +6,15 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:01:02 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 18:08:48 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:47:56 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-t_moves	get_moves()
+t_moves	get_moves(void)
 {
-	return ((t_moves) {
+	return ((t_moves){
 		.sa = swap_a,
 		.sb = swap_b,
 		.ss = swap_ab,
@@ -28,6 +28,7 @@ t_moves	get_moves()
 		.rrr = rotate_reverse_ab,
 	});
 }
+
 void	log_move(t_stack *stack, char *move)
 {
 	while (*move)
