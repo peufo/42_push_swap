@@ -5,7 +5,7 @@ FT_PRINTF	=	./lib/ft_printf
 LIBFT		=	./lib/libft
 FLAGS		=	-Wall -Wextra -Werror -fsanitize=address
 
-SOURCES		=	array/instance.c array/moves.c array/print.c array/push.c array/rotate.c array/rotate_r.c array/swap.c main.c resolve.c 
+SOURCES		=	main.c resolve.c stack/moves.c stack/print.c stack/push.c stack/rotate.c stack/rotate_r.c stack/stack.c stack/swap.c 
 FUNCTIONS	=	$(subst .c,,$(SOURCES))
 OBJECTS		=	$(addsuffix .o, $(addprefix $(DIR_BUILD)/, $(FUNCTIONS)))
 
@@ -20,7 +20,7 @@ $(DIR_BUILD)/%.o: $(DIR_SRC)/%.c | $(DIR_BUILD)
 	@cc $(FLAGS) -I $(FT_PRINTF) -I $(LIBFT) -c $^ -o $@
 
 $(DIR_BUILD):
-	@mkdir -p $(DIR_BUILD)/array
+	@mkdir -p $(DIR_BUILD)/stack
 
 $(LIBS):
 	@make -C $@

@@ -6,42 +6,42 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:52:40 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 18:02:28 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:08:48 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "array.h"
+#include "stack.h"
 
-static void	rotate(t_array *arr, int start, int end)
+static void	rotate(t_stack *stack, int start, int end)
 {
 	int	value;
 	int	i;
 
 	i = start;
-	value = arr->values[i];
+	value = stack->values[i];
 	while (i < end)
 	{
-		arr->values[i] = arr->values[i + 1];
+		stack->values[i] = stack->values[i + 1];
 		i++;
 	}
-	arr->values[i] = value;
+	stack->values[i] = value;
 }
 
-void	rotate_a(t_array *arr)
+void	rotate_a(t_stack *stack)
 {
-	rotate(arr, arr->cursor, arr->len - 1);
-	log_move(arr, "ra");
+	rotate(stack, stack->cursor, stack->len - 1);
+	log_move(stack, "ra");
 }
 
-void	rotate_b(t_array *arr)
+void	rotate_b(t_stack *stack)
 {
-	rotate(arr, 0, arr->cursor - 1);
-	log_move(arr, "rb");
+	rotate(stack, 0, stack->cursor - 1);
+	log_move(stack, "rb");
 }
 
-void	rotate_ab(t_array *arr)
+void	rotate_ab(t_stack *stack)
 {
-	rotate(arr, arr->cursor, arr->len - 1);
-	rotate(arr, 0, arr->cursor - 1);
-	log_move(arr, "rr");
+	rotate(stack, stack->cursor, stack->len - 1);
+	rotate(stack, 0, stack->cursor - 1);
+	log_move(stack, "rr");
 }

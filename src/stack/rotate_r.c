@@ -6,42 +6,42 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:54:49 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 18:02:24 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:08:48 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "array.h"
+#include "stack.h"
 
-static void	rotate_reverse(t_array *arr, int start, int end)
+static void	rotate_reverse(t_stack *stack, int start, int end)
 {
 	int	value;
 	int	i;
 
 	i = end;
-	value = arr->values[i];
+	value = stack->values[i];
 	while (i > start)
 	{
-		arr->values[i] = arr->values[i - 1];
+		stack->values[i] = stack->values[i - 1];
 		i--;
 	}
-	arr->values[i] = value;
+	stack->values[i] = value;
 }
 
-void	rotate_reverse_a(t_array *arr)
+void	rotate_reverse_a(t_stack *stack)
 {
-	rotate_reverse(arr, arr->cursor, arr->len - 1);
-	log_move(arr, "rra");
+	rotate_reverse(stack, stack->cursor, stack->len - 1);
+	log_move(stack, "rra");
 }
 
-void	rotate_reverse_b(t_array *arr)
+void	rotate_reverse_b(t_stack *stack)
 {
-	rotate_reverse(arr, 0, arr->cursor - 1);
-	log_move(arr, "rrb");
+	rotate_reverse(stack, 0, stack->cursor - 1);
+	log_move(stack, "rrb");
 }
 
-void	rotate_reverse_ab(t_array *arr)
+void	rotate_reverse_ab(t_stack *stack)
 {
-	rotate_reverse(arr, arr->cursor, arr->len - 1);
-	rotate_reverse(arr, 0, arr->cursor - 1);
-	log_move(arr, "rrr");
+	rotate_reverse(stack, stack->cursor, stack->len - 1);
+	rotate_reverse(stack, 0, stack->cursor - 1);
+	log_move(stack, "rrr");
 }

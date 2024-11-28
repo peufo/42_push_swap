@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 15:54:47 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/10/11 16:53:33 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:08:48 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static size_t	get_length(char const *str_origin, char c)
 	return (length);
 }
 
-static char	**add_next(char **arr, char *str, char c)
+static char	**add_next(char **stack, char *str, char c)
 {
 	char	*end;
 
@@ -58,29 +58,29 @@ static char	**add_next(char **arr, char *str, char c)
 		end++;
 	if (str == end)
 	{
-		*arr = (void *)0;
-		return (arr);
+		*stack = (void *)0;
+		return (stack);
 	}
-	*arr = str_cut(str, end);
-	if (*arr && add_next(arr + 1, end, c))
-		return (arr);
-	free(*arr);
+	*stack = str_cut(str, end);
+	if (*stack && add_next(stack + 1, end, c))
+		return (stack);
+	free(*stack);
 	return (0);
 }
 
 char	**ft_split(char const *str_origin, char c)
 {
 	size_t		length;
-	char		**arr;
+	char		**stack;
 
 	if (!str_origin)
 		return (0);
 	length = get_length(str_origin, c);
-	arr = malloc(sizeof(*arr) * (length + 1));
-	if (!arr)
+	stack = malloc(sizeof(*stack) * (length + 1));
+	if (!stack)
 		return (0);
-	if (add_next(arr, (char *)str_origin, c))
-		return (arr);
-	free(arr);
+	if (add_next(stack, (char *)str_origin, c))
+		return (stack);
+	free(stack);
 	return (0);
 }

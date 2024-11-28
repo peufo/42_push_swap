@@ -6,11 +6,11 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:01:02 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 17:47:17 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:08:48 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "array.h"
+#include "stack.h"
 
 t_moves	get_moves()
 {
@@ -28,9 +28,9 @@ t_moves	get_moves()
 		.rrr = rotate_reverse_ab,
 	});
 }
-void	log_move(t_array *arr, char *move)
+void	log_move(t_stack *stack, char *move)
 {
 	while (*move)
-		*(arr->writer++) = *(move++);
-	*(arr->writer++) = '\n';
+		*(stack->logger++) = *(move++);
+	*(stack->logger++) = '\n';
 }

@@ -6,24 +6,24 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:50:21 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 17:58:45 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:08:48 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "array.h"
+#include "stack.h"
 
-void	push_a(t_array *arr)
+void	push_a(t_stack *stack)
 {
-	if (!arr->cursor)
+	if (!stack->cursor)
 		return ;
-	arr->cursor--;
-	log_move(arr, "pa");
+	stack->cursor--;
+	log_move(stack, "pa");
 }
 
-void	push_b(t_array *arr)
+void	push_b(t_stack *stack)
 {
-	if (arr->cursor == arr->len - 1)
+	if (stack->cursor == stack->len - 1)
 		return ;
-	arr->cursor++;
-	log_move(arr, "pb");
+	stack->cursor++;
+	log_move(stack, "pb");
 }

@@ -6,15 +6,15 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:55:39 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/07 13:22:16 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:08:47 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	terminate(t_array *arr, char is_error)
+static int	terminate(t_stack *stack, char is_error)
 {
-	clean_array(arr);
+	clean_stack(stack);
 	if (is_error)
 		write(2, "Error\n", 7);
 	return (is_error);
@@ -32,7 +32,7 @@ static int	get_elements_count(char **elements)
 
 int	main(int ac, char **av)
 {
-	t_array	arr;
+	t_stack	stack;
 	int		count;
 	char	**elements;
 
@@ -48,9 +48,9 @@ int	main(int ac, char **av)
 		elements = av + 1;
 		count = ac - 1;
 	}
-	init_array(&arr, count, elements);
-	if (!arr.values)
-		terminate(&arr, 1);
-	resolve(&arr);
-	return (terminate(&arr, 0));
+	init_stack(&stack, count, elements);
+	if (!stack.values)
+		terminate(&stack, 1);
+	resolve(&stack);
+	return (terminate(&stack, 0));
 }

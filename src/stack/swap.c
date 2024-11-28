@@ -6,55 +6,55 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:32:35 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 17:57:46 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:08:48 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "array.h"
+#include "stack.h"
 
-static void	_swap_a(t_array *arr)
+static void	_swap_a(t_stack *stack)
 {
 	int	value;
 	int	a;
 	int	b;
 
-	if (arr->len - arr->cursor < 2)
+	if (stack->len - stack->cursor < 2)
 		return ;
-	a = arr->cursor;
-	b = arr->cursor + 1;
-	value = arr->values[b];
-	arr->values[a] = arr->values[b];
-	arr->values[b] = value;
+	a = stack->cursor;
+	b = stack->cursor + 1;
+	value = stack->values[b];
+	stack->values[a] = stack->values[b];
+	stack->values[b] = value;
 }
-static void	_swap_b(t_array *arr)
+static void	_swap_b(t_stack *stack)
 {
 	int	value;
 	int	a;
 	int	b;
 
-	if (arr->cursor < 2)
+	if (stack->cursor < 2)
 		return ;
-	a = arr->cursor - 2;
-	b = arr->cursor - 1;
-	value = arr->values[b];
-	arr->values[a] = arr->values[b];
-	arr->values[b] = value;
+	a = stack->cursor - 2;
+	b = stack->cursor - 1;
+	value = stack->values[b];
+	stack->values[a] = stack->values[b];
+	stack->values[b] = value;
 }
 
-void	swap_a(t_array *arr) {
-	_swap_a(arr);
-	log_move(arr, "sa");
+void	swap_a(t_stack *stack) {
+	_swap_a(stack);
+	log_move(stack, "sa");
 }
 
-void	swap_b(t_array *arr)
+void	swap_b(t_stack *stack)
 {
-	_swap_b(arr);
-	log_move(arr, "sb");
+	_swap_b(stack);
+	log_move(stack, "sb");
 }
 
-void	swap_ab(t_array *arr)
+void	swap_ab(t_stack *stack)
 {
-	_swap_a(arr);
-	_swap_b(arr);
-	log_move(arr, "ss");
+	_swap_a(stack);
+	_swap_b(stack);
+	log_move(stack, "ss");
 }

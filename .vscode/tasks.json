@@ -19,7 +19,7 @@
         "-lft",
         "-g",
         "${workspaceFolder}/src/*.c",
-        "${workspaceFolder}/src/array/*.c",
+        "${workspaceFolder}/src/stack/*.c",
         "-o",
         "${workspaceFolder}/debug_exe"
       ],
