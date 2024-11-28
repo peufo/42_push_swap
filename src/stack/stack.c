@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:09:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 18:08:48 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 19:50:58 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	init_stack(t_stack *stack, int count, char **elements)
 		stack->values[index] = ft_atoi(elements[index]);
 		index++;
 	}
+	set_moves(stack);
 	set_values_as_indexes(stack);
 }
 

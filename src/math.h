@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:42:13 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 18:44:55 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:58:51 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 
 int	min(int a, int b);
 int	max(int a, int b);
+int	is_between(int v, int min, int max);
 
 #endif

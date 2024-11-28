@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:57:07 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 18:08:47 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 19:56:31 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@
 # include "ft_printf.h"
 # include "libft.h"
 # include "stack/stack.h"
-# define PRINT_ARR_STATE 1
+# include "math.h"
 
 void	resolve(t_stack *stack);
+void	split_a(t_stack *s, int len);
+void	split_b(t_stack *s, int len);
 
 #endif
