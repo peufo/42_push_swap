@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:59:37 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 20:19:00 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 20:43:39 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ void	split_a(t_stack *s, int len)
 	}
 	pull_before_pivot(s, pivot, behind_count);
 	split_a(s, len - sub_len);
+	split_b(s, sub_len);
 }

@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:52:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 20:18:23 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/28 20:43:10 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	stack_print(t_stack *stack)
 	int	index;
 
 	print_n("    ", stack->cursor);
-	ft_printf("👇");
+	ft_printf("👇\n");
 	index = 0;
 	while (index < stack->len)
 		ft_printf(COL, stack->values[index++]);

@@ -41,7 +41,11 @@ watch() {
 				warning "COMPILATION FAILED"
 			else
 				success "COMPILATION OK, RUN TEST..."
-				$PROG $ARGS
+				leaks -atExit -quiet -- $PROG $ARGS
+
+				info "\nCHECKER"
+				$PROG $ARGS | ./checker_Mac $ARGS
+
 			fi
 		fi
 		sleep 0.1

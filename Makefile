@@ -3,7 +3,7 @@ DIR_SRC		=	./src
 DIR_BUILD	=	./build
 FT_PRINTF	=	./lib/ft_printf
 LIBFT		=	./lib/libft
-FLAGS		=	-Wall -Wextra -Werror -fsanitize=address
+FLAGS		=	-Wall -Wextra -Werror #-fsanitize=address
 
 SOURCES		=	main.c resolve.c split_a.c split_b.c stack/moves.c stack/print.c stack/push.c stack/rotate.c stack/rotate_r.c stack/stack.c stack/swap.c 
 FUNCTIONS	=	$(subst .c,,$(SOURCES))
