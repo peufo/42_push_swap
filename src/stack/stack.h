@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:39:59 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 20:18:42 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/29 01:30:30 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,8 @@ void	move_rr(t_stack *stack);
 void	move_rra(t_stack *stack);
 void	move_rrb(t_stack *stack);
 void	move_rrr(t_stack *stack);
+
+void	rotate_left(t_stack *stack, int start, int end);
+void	rotate_right(t_stack *stack, int start, int end);
 
 #endif

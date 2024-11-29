@@ -1,32 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_r.c                                         :+:      :+:    :+:   */
+/*   rotate_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 18:54:49 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/29 01:31:09 by jvoisard         ###   ########.fr       */
+/*   Created: 2024/11/29 01:29:10 by jvoisard          #+#    #+#             */
+/*   Updated: 2024/11/29 01:30:05 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-void	move_rra(t_stack *stack)
+void	rotate_left(t_stack *stack, int start, int end)
 {
-	rotate_left(stack, stack->cursor, stack->len - 1);
-	move_log(stack, "rra");
+	int	value;
+	int	i;
+
+	i = end;
+	value = stack->values[i];
+	while (i > start)
+	{
+		stack->values[i] = stack->values[i - 1];
+		i--;
+	}
+	stack->values[i] = value;
 }
 
-void	move_rrb(t_stack *stack)
+void	rotate_right(t_stack *stack, int start, int end)
 {
-	rotate_right(stack, 0, stack->cursor - 1);
-	move_log(stack, "rrb");
-}
+	int	value;
+	int	i;
 
-void	move_rrr(t_stack *stack)
-{
-	rotate_left(stack, stack->cursor, stack->len - 1);
-	rotate_right(stack, 0, stack->cursor - 1);
-	move_log(stack, "rrr");
+	i = start;
+	value = stack->values[i];
+	while (i < end)
+	{
+		stack->values[i] = stack->values[i + 1];
+		i++;
+	}
+	stack->values[i] = value;
 }

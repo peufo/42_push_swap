@@ -32,7 +32,8 @@ watch() {
 			echo ""
 			PROG="./push_swap"
 			#ARGS="2 1 6 3"
-			ARGS="2 1 3 6 5 8"
+			#ARGS="2 1 3 6 5 8"
+			ARGS="3 4 0 2 1 5"
 			#ARGS="22 1 3 65 5 8 20 74 35 54"
 			#ARGS="5 11 10 20 14 3 19 16 8 13 9 7 17 4 18 12 1 6 2 15"
 			rm -f "$PROG"
@@ -41,7 +42,15 @@ watch() {
 				warning "COMPILATION FAILED"
 			else
 				success "COMPILATION OK, RUN TEST..."
-				leaks -atExit -quiet -- $PROG $ARGS
+				$PROG $ARGS
+
+				LEAKS=$(leaks -atExit -quiet -- $PROG $ARGS)
+				if [ $? ]; then
+					success "\nLEAKS OK"
+				else
+					warning "\nLEAKS DETECTED"
+					echo "$LEAKS"
+				fi
 
 				info "\nCHECKER"
 				$PROG $ARGS | ./checker_Mac $ARGS
