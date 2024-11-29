@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:39:59 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/29 01:30:30 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/29 02:08:46 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,14 @@
 # include "ft_printf.h"
 # include "libft.h"
 
-typedef struct s_stack	t_stack;
-typedef void			(*t_move)(t_stack *);
-
-struct s_stack
+typedef struct s_stack
 {
 	int		len;
 	int		cursor;
 	int		*values;
 	char	*sequence;
 	char	*logger;
-};
+}	t_stack;
 
 void	stack_print(t_stack *stack);
 void	stack_clean(t_stack *stack);
