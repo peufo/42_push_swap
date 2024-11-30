@@ -5,7 +5,7 @@ FT_PRINTF	=	./lib/ft_printf
 LIBFT		=	./lib/libft
 FLAGS		=	-Wall -Wextra -Werror #-fsanitize=address
 
-SOURCES		=	main.c resolve.c split_a.c split_b.c stack/moves.c stack/print.c stack/push.c stack/rotate.c stack/rotate_r.c stack/rotate_utils.c stack/stack.c stack/swap.c 
+SOURCES		=	main.c optimize.c resolve.c split_a.c split_b.c stack/moves.c stack/print.c stack/push.c stack/rotate.c stack/rotate_r.c stack/rotate_utils.c stack/stack.c stack/swap.c 
 FUNCTIONS	=	$(subst .c,,$(SOURCES))
 OBJECTS		=	$(addsuffix .o, $(addprefix $(DIR_BUILD)/, $(FUNCTIONS)))
 

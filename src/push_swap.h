@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:57:07 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 20:02:45 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/30 22:25:15 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@
 # include "stack/stack.h"
 # include "math.h"
 
+typedef struct s_replacer
+{
+	char	*stupid;
+	char	*better;
+}	t_replacer;
+
 void	resolve(t_stack *stack);
+void	optimize(t_stack *s);
 void	split_a(t_stack *s, int len);
 void	split_b(t_stack *s, int len);
 

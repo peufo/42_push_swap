@@ -46,7 +46,7 @@ watch() {
 
 				LEAKS=$(leaks -atExit -quiet -- $PROG $ARGS)
 				if [ $? ]; then
-					success "\nLEAKS OK"
+					success "\nNO LEAKS"
 				else
 					warning "\nLEAKS DETECTED"
 					echo "$LEAKS"
