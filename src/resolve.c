@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 23:20:57 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/30 23:30:02 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/30 23:32:22 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ static int	is_case(t_stack *s, int values[3])
 
 	i = 0;
 	while (i < 3)
+	{
 		if (s->values[i] != values[i])
 			return (0);
+		i++;
+	}
 	return (1);
 }
 
