@@ -6,13 +6,13 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 12:16:31 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/30 22:47:50 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/30 22:56:22 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static char *str_add(char *dest, char *src)
+static char	*str_add(char *dest, char *src)
 {
 	while (*src)
 		*(dest++) = *(src++);
@@ -27,38 +27,31 @@ static int	is_include(char *str, char *pattern)
 	return (1);
 }
 
-static char	*next_move(char *str)
+static int	use_replacers(t_replacer *replacers, char **writer, char **reader)
 {
-	while (*str && *str != '\n')
-		str++;
-	return (str + !!*str);
+	while (replacers->stupid)
+	{
+		if (is_include(*reader, replacers->stupid))
+		{
+			*writer = str_add(*writer, replacers->better);
+			*reader += ft_strlen(replacers->stupid);
+			return (1);
+		}
+		replacers++;
+	}
+	return (0);
 }
 
 static void	replace_patterns(t_stack *s, t_replacer *replacers)
 {
 	char		*reader;
 	char		*writer;
-	char		is_matched;
-	t_replacer	*replacer;
 
 	writer = s->sequence;
 	reader = s->sequence;
 	while (*reader)
 	{
-		is_matched = 0;
-		replacer = replacers;
-		while (replacer->stupid)
-		{
-			if (is_include(reader, replacer->stupid))
-			{
-				writer = str_add(writer, replacer->better);
-				reader = next_move(reader);
-				is_matched = 1;
-				break;
-			}
-			replacer++;
-		}
-		if (!is_matched)
+		if (!use_replacers(replacers, &writer, &reader))
 		{
 			while (*reader && *reader != '\n')
 				*(writer++) = *(reader++);
