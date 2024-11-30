@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 12:16:31 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/30 22:56:22 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/30 23:04:08 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,28 @@ static void	replace_patterns(t_stack *s, t_replacer *replacers)
 {
 	char		*reader;
 	char		*writer;
+	int			is_not_clean;
 
-	writer = s->sequence;
-	reader = s->sequence;
-	while (*reader)
+	is_not_clean = 1;
+	while (is_not_clean)
 	{
-		if (!use_replacers(replacers, &writer, &reader))
+		is_not_clean = 0;
+		writer = s->sequence;
+		reader = s->sequence;
+		while (*reader)
 		{
-			while (*reader && *reader != '\n')
-				*(writer++) = *(reader++);
-			if (*reader)
-				*(writer++) = *(reader++);
+			if (use_replacers(replacers, &writer, &reader))
+				is_not_clean = 1;
+			else
+			{
+				while (*reader && *reader != '\n')
+					*(writer++) = *(reader++);
+				if (*reader)
+					*(writer++) = *(reader++);
+			}
 		}
+		*writer = '\0';
 	}
-	*writer = '\0';
 }
 
 void	optimize(t_stack *s)
