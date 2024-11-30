@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:55:39 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 20:18:42 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/30 23:17:08 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,21 @@ static int	get_elements_count(char **elements)
 	while (elements[count])
 		count++;
 	return (count);
+}
+
+static int	is_120(t_stack *s)
+{
+	if (s->len != 3)
+		return (0);
+	return (s->values[0] == 1 && s->values[1] == 2 && s->values[2] == 0);
+}
+
+static void	resolve(t_stack *stack)
+{
+	if (is_120(stack))
+		return (ft_putstr("rra\n"));
+	split_a(stack, stack->len);
+	optimize(stack);
 }
 
 int	main(int ac, char **av)
@@ -52,5 +67,6 @@ int	main(int ac, char **av)
 	if (!stack.values)
 		terminate(&stack, 1);
 	resolve(&stack);
+	ft_putstr(stack.sequence);
 	return (terminate(&stack, 0));
 }

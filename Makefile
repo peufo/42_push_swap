@@ -3,9 +3,9 @@ DIR_SRC		=	./src
 DIR_BUILD	=	./build
 FT_PRINTF	=	./lib/ft_printf
 LIBFT		=	./lib/libft
-FLAGS		=	-Wall -Wextra -Werror #-fsanitize=address
+FLAGS		=	-Wall -Wextra -Werror -fsanitize=address
 
-SOURCES		=	main.c optimize.c resolve.c split_a.c split_b.c stack/moves.c stack/print.c stack/push.c stack/rotate.c stack/rotate_r.c stack/rotate_utils.c stack/stack.c stack/swap.c 
+SOURCES		=	optimize.c push_swap.c split_a.c split_b.c stack/moves.c stack/print.c stack/push.c stack/rotate.c stack/rotate_r.c stack/rotate_utils.c stack/stack.c stack/swap.c 
 FUNCTIONS	=	$(subst .c,,$(SOURCES))
 OBJECTS		=	$(addsuffix .o, $(addprefix $(DIR_BUILD)/, $(FUNCTIONS)))
 
