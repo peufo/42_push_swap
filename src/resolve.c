@@ -6,7 +6,7 @@
 /*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 23:20:57 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/30 23:32:22 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/11/30 23:35:12 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ static int	use_special_cases(t_stack *s)
 	if (is_case(s, (int []){2, 1, 0}))
 	{
 		ft_putstr("sa\nrra\n");
+		return (1);
+	}
+	if (is_case(s, (int []){1, 0, 2}))
+	{
+		ft_putstr("sa\n");
 		return (1);
 	}
 	return (0);
