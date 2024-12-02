@@ -6,7 +6,7 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:59:37 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/02 15:45:06 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:05:21 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	split_a(t_stack *s, int len)
 
 	sub_len = len / 2;
 	pivot = s->cursor + sub_len;
-	check_swap(s);
 	behind_count = get_behind_count(s, len);
 	if (len <= 1)
 	{
@@ -82,6 +81,7 @@ void	split_a(t_stack *s, int len)
 			move_sa(s);
 		return ;
 	}
+	check_swap(s);
 	pull_before_pivot(s, pivot, behind_count);
 	split_a(s, len - sub_len);
 	split_b(s, sub_len);

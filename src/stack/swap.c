@@ -6,7 +6,7 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:32:35 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/02 15:44:24 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:07:11 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	swap_a(t_stack *stack)
 	int	a;
 	int	b;
 
-	if (stack->cursor < stack->len - 1)
+	if (stack->cursor > stack->len - 1)
 		return ;
 	a = stack->cursor;
 	b = stack->cursor + 1;
