@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_a.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
+/*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 21:59:37 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 23:29:54 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:45:06 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	split_a(t_stack *s, int len)
 
 	sub_len = len / 2;
 	pivot = s->cursor + sub_len;
+	check_swap(s);
 	behind_count = get_behind_count(s, len);
 	if (len <= 1)
 	{

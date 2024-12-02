@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
+/*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:57:07 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/30 23:21:31 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:49:17 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void	resolve(t_stack *stack);
 void	optimize(t_stack *s);
 void	split_a(t_stack *s, int len);
 void	split_b(t_stack *s, int len);
+void	check_swap(t_stack *s);
 
 #endif

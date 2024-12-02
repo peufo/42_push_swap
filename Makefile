@@ -3,9 +3,9 @@ DIR_SRC		=	./src
 DIR_BUILD	=	./build
 FT_PRINTF	=	./lib/ft_printf
 LIBFT		=	./lib/libft
-FLAGS		=	-Wall -Wextra -Werror -fsanitize=address
+FLAGS		=	-Wall -Wextra -Werror #-fsanitize=address
 
-SOURCES		=	optimize.c push_swap.c resolve.c split_a.c split_b.c stack/moves.c stack/print.c stack/push.c stack/rotate.c stack/rotate_r.c stack/rotate_utils.c stack/stack.c stack/swap.c 
+SOURCES		=	check_swap.c optimize.c push_swap.c resolve.c split_a.c split_b.c stack/moves.c stack/print.c stack/push.c stack/rotate.c stack/rotate_r.c stack/rotate_utils.c stack/stack.c stack/swap.c 
 FUNCTIONS	=	$(subst .c,,$(SOURCES))
 OBJECTS		=	$(addsuffix .o, $(addprefix $(DIR_BUILD)/, $(FUNCTIONS)))
 
@@ -26,7 +26,7 @@ $(LIBS):
 	@make -C $@
 
 wasm:
-	docker run --rm -v $(shell pwd):/src emscripten/emsdk emcc src/*.c src/**/*.c lib/**/*.c -I $(FT_PRINTF) -I $(LIBFT) -O3 -o $(NAME).wasm
+	docker run --rm -v $(shell pwd):/src emscripten/emsdk emcc src/*.c src/**/*.c lib/**/*.c -I $(FT_PRINTF) -I $(LIBFT) -o $(NAME).wasm
 
 clean:
 	make clean -C $(FT_PRINTF)

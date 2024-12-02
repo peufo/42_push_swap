@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
+/*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:32:35 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 20:17:34 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:44:24 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static void	swap_a(t_stack *stack)
 	int	a;
 	int	b;
 
-	if (stack->len - stack->cursor < 2)
+	if (stack->cursor < stack->len - 1)
 		return ;
 	a = stack->cursor;
 	b = stack->cursor + 1;
-	value = stack->values[b];
+	value = stack->values[a];
 	stack->values[a] = stack->values[b];
 	stack->values[b] = value;
 }
@@ -37,7 +37,7 @@ static void	swap_b(t_stack *stack)
 		return ;
 	a = stack->cursor - 2;
 	b = stack->cursor - 1;
-	value = stack->values[b];
+	value = stack->values[a];
 	stack->values[a] = stack->values[b];
 	stack->values[b] = value;
 }

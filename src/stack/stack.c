@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
+/*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:09:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/28 20:58:29 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:34:02 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	stack_init(t_stack *stack, int count, char **elements)
 	stack->cursor = 0;
 	stack->len = count;
 	stack->values = ft_calloc(count, sizeof(*(stack->values)));
-	stack->sequence = ft_calloc(count * 20, 4);
+	stack->alloced = count * 20 * 4;
+	stack->sequence = ft_calloc(stack->alloced, 1);
 	stack->logger = stack->sequence;
 	if (!stack->values || !stack->sequence)
 		return (stack_clean(stack));
