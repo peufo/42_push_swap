@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvoisard <jonas.voisard@gmail.com>         +#+  +:+       +#+        */
+/*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 01:29:10 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/11/29 02:08:59 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/03 18:51:11 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ void	rotate_left(t_stack *stack, int start, int end)
 	int	value;
 	int	i;
 
+	if (start < 0 || end < 0)
+		return ;
+	if (start >= stack->len || end >= stack->len)
+		return ;
 	i = end;
 	value = stack->values[i];
 	while (i > start)
@@ -32,6 +36,10 @@ void	rotate_right(t_stack *stack, int start, int end)
 	int	value;
 	int	i;
 
+	if (start < 0 || end < 0)
+		return ;
+	if (start >= stack->len || end >= stack->len)
+		return ;
 	i = start;
 	value = stack->values[i];
 	while (i < end)

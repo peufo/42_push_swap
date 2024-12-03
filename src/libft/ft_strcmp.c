@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.h                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 16:28:24 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/03 18:18:52 by jvoisard         ###   ########.fr       */
+/*   Created: 2024/12/03 17:47:31 by jvoisard          #+#    #+#             */
+/*   Updated: 2024/12/03 18:09:00 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
-# include "get_next_line.h"
-# include "stack.h"
-
-typedef void	t_move_func(t_stack *stack);
-typedef struct s_move
+int	ft_strcmp(char *a, char *b)
 {
-	char		*key;
-	t_move_func	*move;
-}	t_move;
-
-void	run_sequence(t_stack *s);
-int		terminate(t_stack *stack, char is_error);
-
-#endif
+	while (*a && *b)
+	{
+		if (*a != *b)
+			return (*a - *b);
+		a++;
+		b++;
+	}
+	return (*a - *b);
+}

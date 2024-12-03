@@ -6,18 +6,18 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 16:18:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/03 17:37:27 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/03 18:44:27 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static int	terminate(t_stack *stack, char is_error)
+int	terminate(t_stack *stack, char is_error)
 {
 	stack_clean(stack);
 	if (is_error)
 		write(2, "Error\n", 7);
-	return (is_error);
+	exit(is_error);
 }
 
 static int	get_elements_count(char **elements)
@@ -28,6 +28,22 @@ static int	get_elements_count(char **elements)
 	while (elements[count])
 		count++;
 	return (count);
+}
+
+static int	is_sorted(t_stack *s)
+{
+	int	i;
+
+	if (s->cursor != 0)
+		return (0);
+	i = 0;
+	while (i < s->len - 1)
+	{
+		if (s->values[i + 1] - s->values[i] != 1)
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	main(int ac, char **av)
@@ -51,6 +67,10 @@ int	main(int ac, char **av)
 	stack_init(&stack, count, elements);
 	if (!stack.values)
 		terminate(&stack, 1);
-	ft_putstr("TA MERE");
+	run_sequence(&stack);
+	if (is_sorted(&stack))
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
 	return (terminate(&stack, 0));
 }
