@@ -6,7 +6,7 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:09:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/02 15:34:02 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:26:43 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,14 @@ void	stack_init(t_stack *stack, int count, char **elements)
 void	stack_clean(t_stack *stack)
 {
 	if (stack->values)
+	{
 		free(stack->values);
+		stack->values = NULL;
+	}
 	if (stack->sequence)
+	{
 		free(stack->sequence);
+		stack->sequence = NULL;
+	}
 	return ;
 }

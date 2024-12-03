@@ -6,7 +6,7 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 18:16:20 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/03 18:44:37 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:35:46 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	run_next_move(t_move *moves, t_stack *s)
 	int		i;
 
 	move = get_next_line(STDIN_FILENO);
-	if (!move)
+	if (!move || *move == '\0')
 		return (0);
 	i = 0;
 	while (i < 11)

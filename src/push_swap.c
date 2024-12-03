@@ -6,7 +6,7 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:55:39 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/03 18:46:29 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:24:05 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 	}
 	stack_init(&stack, count, elements);
 	if (!stack.values)
-		terminate(&stack, 1);
+		return (terminate(&stack, 1));
 	resolve(&stack);
 	ft_putstr(stack.sequence);
 	return (terminate(&stack, 0));

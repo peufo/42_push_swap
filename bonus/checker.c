@@ -6,7 +6,7 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 16:18:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/03 18:44:27 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:37:31 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int ac, char **av)
 	}
 	stack_init(&stack, count, elements);
 	if (!stack.values)
-		terminate(&stack, 1);
+		return (terminate(&stack, 1));
 	run_sequence(&stack);
 	if (is_sorted(&stack))
 		ft_putstr("OK\n");

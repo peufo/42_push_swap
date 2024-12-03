@@ -35,7 +35,10 @@ watch() {
 			#ARGS="2 1 6 3"
 			#ARGS="2 1 3 6 5 8"
 			#ARGS="3 4 0 2 1 5"
-			ARGS="2 1 3 6 5 8"
+			#ARGS="2 1 3 6 5 8"
+
+			ARGS="2 1 3 6 2147483647 5 2147483645 8 2147483248"
+			ARGS="2 1 3 6 214748361 sa 5 214748364 8 214748323"
 			#ARGS="22 1 3 65 5 8 20 74 35 54"
 			#ARGS="5 11 10 20 14 3 19 16 8 13 9 7 17 4 18 12 1 6 2 15"
 			rm -f "$PROG"
@@ -49,16 +52,14 @@ watch() {
 				$PROG $ARGS
 
 				if [ $(uname) = "Linux" ];  then
-					LEAKS=$(valgrind -q -- $PROG $ARGS)
-					if [ $? ]; then
-						success "\nNO LEAKS"
-					else
-						warning "\nLEAKS DETECTED"
-					fi
-
+					#LEAKS=$(valgrind -q -- $PROG $ARGS)
+					#if [ $? ]; then
+					#	success "\nNO LEAKS"
+					#else
+					#	warning "\nLEAKS DETECTED"
+					#fi
 					info "\nCHECKER PROVIDED"
 					$PROG $ARGS | ./checker_linux $ARGS
-
 				else
 					LEAKS=$(leaks -atExit -quiet -- $PROG $ARGS)
 					if [ $? ]; then
