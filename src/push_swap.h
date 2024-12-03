@@ -6,20 +6,13 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 19:57:07 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/02 13:49:17 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:21:37 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include "ft_printf.h"
-# include "libft.h"
 # include "stack/stack.h"
-# include "math.h"
 
 typedef struct s_replacer
 {

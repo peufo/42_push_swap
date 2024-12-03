@@ -6,15 +6,17 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:39:59 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/02 15:33:27 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:21:54 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
 # include <stdlib.h>
-# include "ft_printf.h"
-# include "libft.h"
+# include "../libft/libft.h"
 
 typedef struct s_stack
 {
@@ -26,7 +28,6 @@ typedef struct s_stack
 	int		alloced;
 }	t_stack;
 
-void	stack_print(t_stack *stack);
 void	stack_clean(t_stack *stack);
 void	stack_init(t_stack *stack, int count, char **elements);
 

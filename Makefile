@@ -1,44 +1,46 @@
 NAME		=	push_swap
+NAME_BONUS	=	checker
 DIR_SRC		=	./src
+DIR_BONUS	=	./bonus
 DIR_BUILD	=	./build
-FT_PRINTF	=	./lib/ft_printf
-LIBFT		=	./lib/libft
 FLAGS		=	-Wall -Wextra -Werror #-fsanitize=address
+INCLUDES	= 	-I $(DIR_SRC) -I $(DIR_SRC)/stack -I $(DIR_SRC)/libft
 
-SOURCES		=	check_swap.c optimize.c push_swap.c resolve.c split_a.c split_b.c stack/moves.c stack/print.c stack/push.c stack/rotate.c stack/rotate_r.c stack/rotate_utils.c stack/stack.c stack/swap.c 
+SOURCES		=	check_swap.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libft/ft_isdigit.c libft/ft_putstr.c libft/ft_split.c libft/ft_strlen.c optimize.c push_swap.c resolve.c split_a.c split_b.c stack/moves.c stack/push.c stack/rotate.c stack/rotate_r.c stack/rotate_utils.c stack/stack.c stack/swap.c 
 FUNCTIONS	=	$(subst .c,,$(SOURCES))
 OBJECTS		=	$(addsuffix .o, $(addprefix $(DIR_BUILD)/, $(FUNCTIONS)))
+
+SOURCES_BONUS	=	checker.c get_next_line.c libft/ft_atoi.c libft/ft_bzero.c libft/ft_calloc.c libft/ft_isdigit.c libft/ft_putstr.c libft/ft_split.c libft/ft_strlen.c stack/moves.c stack/push.c stack/rotate.c stack/rotate_r.c stack/rotate_utils.c stack/stack.c stack/swap.c 
+FUNCTIONS_BONUS	=	$(subst .c,,$(SOURCES_BONUS))
+OBJECTS_BONUS	=	$(addsuffix .o, $(addprefix $(DIR_BUILD)/, $(FUNCTIONS_BONUS)))
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@make -C $(FT_PRINTF)
-	@make -C $(LIBFT)
-	@cc $(OBJECTS) $(FLAGS) -L $(FT_PRINTF) -lftprintf -L $(LIBFT) -lft -o $(NAME)
+	@cc $(OBJECTS) $(FLAGS) -o $(NAME)
 
 $(DIR_BUILD)/%.o: $(DIR_SRC)/%.c | $(DIR_BUILD)
-	@cc $(FLAGS) -I $(FT_PRINTF) -I $(LIBFT) -c $^ -o $@
+	@cc $(FLAGS) $(INCLUDES) -c $^ -o $@
+
+$(DIR_BUILD)/%.o: $(DIR_BONUS)/%.c | $(DIR_BUILD)
+	@cc $(FLAGS) $(INCLUDES) -c $^ -o $@
 
 $(DIR_BUILD):
 	@mkdir -p $(DIR_BUILD)/stack
+	@mkdir -p $(DIR_BUILD)/libft
 
-$(LIBS):
-	@make -C $@
+bonus: $(OBJECTS_BONUS)
+	@cc $(OBJECTS_BONUS) $(FLAGS) $(INCLUDES) -o $(NAME_BONUS)
 
 wasm:
-	docker run --rm -v $(shell pwd):/src emscripten/emsdk emcc src/*.c src/**/*.c lib/**/*.c -I $(FT_PRINTF) -I $(LIBFT) -o $(NAME).wasm
+	docker run --rm -v $(shell pwd):/src emscripten/emsdk emcc $(SOURCES) -o $(NAME).wasm
 
 clean:
-	make clean -C $(FT_PRINTF)
-	make clean -C $(LIBFT)
 	rm -rf $(DIR_BUILD)
 
 fclean: clean
-	make fclean -C $(FT_PRINTF)
-	make fclean -C $(LIBFT)
 	rm -f $(NAME)
-	rm -f $(NAME_SO)
+	rm -f $(NAME).wasm
+	rm -f $(NAME_BONUS)
 
 re: fclean all
-	make re -C $(FT_PRINTF)
-	make re -C $(LIBFT)

@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/06 16:17:20 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/10/08 16:31:53 by jvoisard         ###   ########.fr       */
+/*   Created: 2024/09/22 22:24:54 by jvoisard          #+#    #+#             */
+/*   Updated: 2024/12/03 17:23:23 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFT_H
+# define LIBFT_H
+# include <stdlib.h>
+# include <unistd.h>
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
-{
-	if (lst && f)
-		f(lst->content);
-	if (lst && lst->next)
-		ft_lstiter(lst->next, f);
-}
+int		ft_atoi(const char *str);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t count, size_t size);
+int		ft_isdigit(int c);
+int		ft_isint(char *str);
+char	**ft_split(char const *str_origin, char c);
+size_t	ft_strlen(const char *str);
+void	ft_putstr(char *str);
+
+#endif

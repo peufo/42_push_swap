@@ -6,3 +6,4 @@ libft.a
 *.dSYM
 *.wasm
 debug_exe
+checker

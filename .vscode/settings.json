@@ -1,13 +1,6 @@
 {
-  "files.associations": {
-    "*.astro": "astro",
-    "push_swap.h": "c",
-    "ios": "c",
-    "__node_handle": "c",
-    "move_utils.h": "c",
-    "stack.h": "c",
-    "stdlib.h": "c",
-    "__bit_reference": "c",
-    "variant": "c"
-  }
+    "files.associations": {
+        "libft.h": "c",
+        "stack.h": "c"
+    }
 }

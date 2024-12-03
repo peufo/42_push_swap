@@ -31,6 +31,7 @@ watch() {
 
 			echo ""
 			PROG="./push_swap"
+			PROG_BONUS="./checker"
 			#ARGS="2 1 6 3"
 			#ARGS="2 1 3 6 5 8"
 			#ARGS="3 4 0 2 1 5"
@@ -38,7 +39,9 @@ watch() {
 			#ARGS="22 1 3 65 5 8 20 74 35 54"
 			#ARGS="5 11 10 20 14 3 19 16 8 13 9 7 17 4 18 12 1 6 2 15"
 			rm -f "$PROG"
+			rm -f "$PROG_BONUS"
 			make
+			make bonus
 			if [ ! -f "$PROG" ]; then
 				warning "COMPILATION FAILED"
 			else
@@ -53,7 +56,7 @@ watch() {
 						warning "\nLEAKS DETECTED"
 					fi
 
-					info "\nCHECKER"
+					info "\nCHECKER PROVIDED"
 					$PROG $ARGS | ./checker_linux $ARGS
 
 				else
@@ -64,9 +67,12 @@ watch() {
 						warning "\nLEAKS DETECTED"
 						echo "$LEAKS"
 					fi
-					info "\nCHECKER"
+					info "\nCHECKER PROVIDED"
 					$PROG $ARGS | ./checker_Mac $ARGS
 				fi
+
+				info "\nCHECKER BONUS"
+				$PROG $ARGS | $PROG_BONUS $ARGS
 			fi
 		fi
 		sleep 0.1
