@@ -52,12 +52,12 @@ watch() {
 				$PROG $ARGS
 
 				if [ $(uname) = "Linux" ];  then
-					#LEAKS=$(valgrind -q -- $PROG $ARGS)
-					#if [ $? ]; then
-					#	success "\nNO LEAKS"
-					#else
-					#	warning "\nLEAKS DETECTED"
-					#fi
+					LEAKS=$(valgrind -q -- $PROG $ARGS)
+					if [ $? ]; then
+						success "\nNO LEAKS"
+					else
+						warning "\nLEAKS DETECTED"
+					fi
 					info "\nCHECKER PROVIDED"
 					$PROG $ARGS | ./checker_linux $ARGS
 				else
