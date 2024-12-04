@@ -6,13 +6,13 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:58:27 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/10/08 16:30:14 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/04 11:47:35 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	is_space(char c)
+char	is_space(char c)
 {
 	return (c == ' '
 		|| c == '\t'

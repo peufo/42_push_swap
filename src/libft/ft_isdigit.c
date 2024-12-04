@@ -6,31 +6,31 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 23:53:41 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/03 19:08:04 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/04 11:52:30 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isint_overflow(char *str)
+static int	ft_is_over(char *str, char *limit)
 {
-	char	*max;
-	int		i;
+	int		limit_len;
+	int		str_len;
 
-	i = 0;
-	while (str[i])
-		i++;
-	if (i < 10)
+	limit_len = ft_strlen(limit);
+	str_len = ft_strlen(str);
+	if (str_len < limit_len)
 		return (0);
-	if (i > 10)
+	if (str_len > limit_len)
 		return (1);
-	i = 0;
-	max = "2147483647";
-	while (max[i])
+	while (*limit)
 	{
-		if (str[i] > max[i])
+		if (*str > *limit)
 			return (1);
-		i++;
+		if (*str < *limit)
+			return (0);
+		str++;
+		limit++;
 	}
 	return (0);
 }
@@ -40,14 +40,27 @@ int	ft_isdigit(int c)
 	return ('0' <= c && c <= '9');
 }
 
-int	ft_isint(char *str)
+int	ft_is_int(char *str)
 {
-	if (!str)
-		return (0);
-	if (*str == '+' || *str == '-')
+	short	sign;
+
+	sign = 1;
+	while (is_space(*str))
 		str++;
-	if (ft_isint_overflow(str))
-		return (0);
+	if (*str == '-' || *str == '+')
+		sign -= (*(str++) == '-') * 2;
+	while (*str == '0')
+		str++;
+	if (sign == 1)
+	{
+		if (ft_is_over(str, "2147483647"))
+			return (0);
+	}
+	else
+	{
+		if (ft_is_over(str, "2147483648"))
+			return (0);
+	}
 	while (*str)
 		if (!ft_isdigit(*(str++)))
 			return (0);

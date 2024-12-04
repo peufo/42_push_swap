@@ -6,7 +6,7 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:09:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/03 19:26:43 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/04 11:36:45 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	stack_init(t_stack *stack, int count, char **elements)
 	index = 0;
 	while (index < count)
 	{
-		if (!ft_isint(elements[index]))
+		if (!ft_is_int(elements[index]))
 			return (stack_clean(stack));
 		stack->values[index] = ft_atoi(elements[index]);
 		index++;
