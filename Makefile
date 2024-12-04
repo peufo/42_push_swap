@@ -32,8 +32,8 @@ $(DIR_BUILD):
 bonus: $(OBJECTS_BONUS)
 	@cc $(OBJECTS_BONUS) $(FLAGS) $(INCLUDES) -o $(NAME_BONUS)
 
-wasm:
-	docker run --rm -v $(shell pwd):/src emscripten/emsdk emcc $(SOURCES) -o $(NAME).wasm
+wasm: 
+	docker run --rm -v $(shell pwd):/src emscripten/emsdk emcc $(addprefix $(DIR_SRC)/, $(SOURCES)) -o $(NAME).wasm
 
 clean:
 	rm -rf $(DIR_BUILD)
