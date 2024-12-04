@@ -6,7 +6,7 @@
 /*   By: jvoisard <jvoisard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 19:09:29 by jvoisard          #+#    #+#             */
-/*   Updated: 2024/12/04 11:36:45 by jvoisard         ###   ########.fr       */
+/*   Updated: 2024/12/04 12:00:29 by jvoisard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,22 @@ static int	get_indexof(t_stack *stack, int value)
 	return (count);
 }
 
+static int	is_unique(t_stack *s, int index)
+{
+	int	value;
+	int	i;
+
+	value = s->values[index];
+	i = 0;
+	while (i < s->len)
+	{
+		if (i != index && value == s->values[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static void	set_values_as_indexes(t_stack *stack)
 {
 	int	*indexes;
@@ -35,6 +51,8 @@ static void	set_values_as_indexes(t_stack *stack)
 	index = 0;
 	while (index < stack->len)
 	{
+		if (!is_unique(stack, index))
+			return (stack_clean(stack));
 		indexes[index] = get_indexof(stack, stack->values[index]);
 		index++;
 	}
